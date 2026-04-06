@@ -1,0 +1,110 @@
+Error clicking the login button: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for getByRole('button', { name: /Log In/i })
+    - locator resolved to <button class="primary" data-v-ff526fde="" disabled="disabled"> Log In </button>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not enabled
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not enabled
+    - retrying click action
+      - waiting 100ms
+    - waiting for element to be visible, enabled and stable
+    - element is not enabled
+  - retrying click action
+    - waiting 500ms
+    - waiting for" https://test-app.ewn.com/legacy/Login" navigation to finish...
+    - navigated to "https://test-auth.ewn.com/connect/authorize?response_type=code+id_token&response_mode=form_post&client_id=D612BD2A-ADC1-4F8F-B161-7E9D082F7042&scope=openid+offline_access&redirect_uri=https%3a%2f%2ft…"
+    - waiting for element to be visible, enabled and stable
+  - element was detached from the DOM, retrying
+    - waiting for" https://test-app.ewn.com/legacy/Help" navigation to finish...
+    - navigated to "https://test-app.ewn.com/legacy/Help"
+
+    at LoginPage.clickLoginButton (C:\Automation\EWN-FrameworkTest\pages\LoginPage.ts:56:36)
+    at C:\Automation\EWN-FrameworkTest\tests\LoginPage.spec.ts:28:19 {
+  [Symbol(step)]: {
+    location: {
+      file: 'C:\\Automation\\EWN-FrameworkTest\\pages\\LoginPage.ts',
+      line: 56,
+      column: 36,
+      function: 'LoginPage.clickLoginButton'
+    },
+    category: 'pw:api',
+    title: "Click getByRole('button', { name: /Log In/i })",
+    apiName: 'locator.click',
+    params: {
+      selector: 'internal:role=button[name=/Log In/i]',
+      strict: true,
+      timeout: 0
+    },
+    group: undefined,
+    stepId: 'pw:api@37',
+    boxedStack: undefined,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [TestInfoImpl],
+      _stepId: 'pw:api@37',
+      _title: "Click getByRole('button', { name: /Log In/i })",
+      _parentStep: undefined,
+      skip: [Function (anonymous)]
+    },
+    complete: [Function: complete],
+    endWallTime: 1772719709448,
+    error: {
+      message: 'Error: locator.click: Test timeout of 30000ms exceeded.\n' +
+        'Call log:\n' +
+        "\x1B[2m  - waiting for getByRole('button', { name: /Log In/i })\x1B[22m\n" +
+        '\x1B[2m    - locator resolved to <button class="primary" data-v-ff526fde="" disabled="disabled"> Log In </button>\x1B[22m\n' +
+        '\x1B[2m  - attempting click action\x1B[22m\n' +
+        '\x1B[2m    2 × waiting for element to be visible, enabled and stable\x1B[22m\n' +
+        '\x1B[2m      - element is not enabled\x1B[22m\n' +
+        '\x1B[2m    - retrying click action\x1B[22m\n' +
+        '\x1B[2m    - waiting 20ms\x1B[22m\n' +
+        '\x1B[2m    2 × waiting for element to be visible, enabled and stable\x1B[22m\n' +
+        '\x1B[2m      - element is not enabled\x1B[22m\n' +
+        '\x1B[2m    - retrying click action\x1B[22m\n' +
+        '\x1B[2m      - waiting 100ms\x1B[22m\n' +
+        '\x1B[2m    - waiting for element to be visible, enabled and stable\x1B[22m\n' +
+        '\x1B[2m    - element is not enabled\x1B[22m\n' +
+        '\x1B[2m  - retrying click action\x1B[22m\n' +
+        '\x1B[2m    - waiting 500ms\x1B[22m\n' +
+        '\x1B[2m    - waiting for" https://test-app.ewn.com/legacy/Login" navigation to finish...\x1B[22m\n' +
+        '\x1B[2m    - navigated to "https://test-auth.ewn.com/connect/authorize?response_type=code+id_token&response_mode=form_post&client_id=D612BD2A-ADC1-4F8F-B161-7E9D082F7042&scope=openid+offline_access&redirect_uri=https%3a%2f%2ft…"\x1B[22m\n' +
+        '\x1B[2m    - waiting for element to be visible, enabled and stable\x1B[22m\n' +
+        '\x1B[2m  - element was detached from the DOM, retrying\x1B[22m\n' +
+        '\x1B[2m    - waiting for" https://test-app.ewn.com/legacy/Help" navigation to finish...\x1B[22m\n' +
+        '\x1B[2m    - navigated to "https://test-app.ewn.com/legacy/Help"\x1B[22m\n',
+      stack: 'Error: locator.click: Test timeout of 30000ms exceeded.\n' +
+        'Call log:\n' +
+        "\x1B[2m  - waiting for getByRole('button', { name: /Log In/i })\x1B[22m\n" +
+        '\x1B[2m    - locator resolved to <button class="primary" data-v-ff526fde="" disabled="disabled"> Log In </button>\x1B[22m\n' +
+        '\x1B[2m  - attempting click action\x1B[22m\n' +
+        '\x1B[2m    2 × waiting for element to be visible, enabled and stable\x1B[22m\n' +
+        '\x1B[2m      - element is not enabled\x1B[22m\n' +
+        '\x1B[2m    - retrying click action\x1B[22m\n' +
+        '\x1B[2m    - waiting 20ms\x1B[22m\n' +
+        '\x1B[2m    2 × waiting for element to be visible, enabled and stable\x1B[22m\n' +
+        '\x1B[2m      - element is not enabled\x1B[22m\n' +
+        '\x1B[2m    - retrying click action\x1B[22m\n' +
+        '\x1B[2m      - waiting 100ms\x1B[22m\n' +
+        '\x1B[2m    - waiting for element to be visible, enabled and stable\x1B[22m\n' +
+        '\x1B[2m    - element is not enabled\x1B[22m\n' +
+        '\x1B[2m  - retrying click action\x1B[22m\n' +
+        '\x1B[2m    - waiting 500ms\x1B[22m\n' +
+        '\x1B[2m    - waiting for" https://test-app.ewn.com/legacy/Login" navigation to finish...\x1B[22m\n' +
+        '\x1B[2m    - navigated to "https://test-auth.ewn.com/connect/authorize?response_type=code+id_token&response_mode=form_post&client_id=D612BD2A-ADC1-4F8F-B161-7E9D082F7042&scope=openid+offline_access&redirect_uri=https%3a%2f%2ft…"\x1B[22m\n' +
+        '\x1B[2m    - waiting for element to be visible, enabled and stable\x1B[22m\n' +
+        '\x1B[2m  - element was detached from the DOM, retrying\x1B[22m\n' +
+        '\x1B[2m    - waiting for" https://test-app.ewn.com/legacy/Help" navigation to finish...\x1B[22m\n' +
+        '\x1B[2m    - navigated to "https://test-app.ewn.com/legacy/Help"\x1B[22m\n' +
+        '\n' +
+        '    at LoginPage.clickLoginButton (C:\\Automation\\EWN-FrameworkTest\\pages\\LoginPage.ts:56:36)\n' +
+        '    at C:\\Automation\\EWN-FrameworkTest\\tests\\LoginPage.spec.ts:28:19',
+      cause: undefined
+    }
+  }
+}

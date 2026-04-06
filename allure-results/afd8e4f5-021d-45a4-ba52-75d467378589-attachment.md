@@ -1,0 +1,268 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - banner [ref=e3]:
+    - button "Close Menu" [ref=e4] [cursor=pointer]:
+      - img [ref=e5]
+    - link "EWN Logo" [ref=e7] [cursor=pointer]:
+      - /url: /legacy/
+      - img "EWN Logo" [ref=e8]
+    - list [ref=e9]:
+      - listitem [ref=e10]:
+        - link "User Image Julia Tkachenko Energy Worldnet" [ref=e11] [cursor=pointer]:
+          - /url: /legacy/MyProfile
+          - img "User Image" [ref=e12]
+          - generic [ref=e13]:
+            - generic [ref=e14]: Julia Tkachenko
+            - generic [ref=e15]: Energy Worldnet
+      - listitem [ref=e16]:
+        - generic "Notifications" [ref=e17]:
+          - button [ref=e18] [cursor=pointer]:
+            - img [ref=e19]
+      - listitem [ref=e21]:
+        - generic "Support" [ref=e22]:
+          - button [ref=e23] [cursor=pointer]:
+            - img [ref=e24]
+      - listitem [ref=e26]:
+        - button "Log Out" [ref=e28] [cursor=pointer]:
+          - img [ref=e29]
+  - generic [ref=e31]:
+    - region "scrollable content" [ref=e37]:
+      - navigation [ref=e39]:
+        - generic [ref=e40]:
+          - heading "EWN Internal" [level=3] [ref=e41]
+          - list [ref=e42]:
+            - listitem [ref=e43]:
+              - button "Subscriptions" [ref=e45] [cursor=pointer]:
+                - img [ref=e46]
+                - text: Subscriptions
+                - img [ref=e48]
+            - listitem [ref=e50]:
+              - button "Accounting" [ref=e52] [cursor=pointer]:
+                - img [ref=e53]
+                - text: Accounting
+                - img [ref=e55]
+            - listitem [ref=e57]:
+              - button "Utilities" [ref=e59] [cursor=pointer]:
+                - img [ref=e60]
+                - text: Utilities
+                - img [ref=e62]
+        - generic [ref=e64]:
+          - heading "My Toolbox" [level=3] [ref=e65]
+          - list [ref=e66]:
+            - listitem [ref=e67]:
+              - link "My Requirements" [ref=e69] [cursor=pointer]:
+                - /url: /legacy/MyRequirements
+                - img [ref=e70]
+                - text: My Requirements
+            - listitem [ref=e72]:
+              - link "My Forms" [ref=e74] [cursor=pointer]:
+                - /url: /static/my-forms
+                - img [ref=e75]
+                - text: My Forms
+            - listitem [ref=e77]:
+              - generic [ref=e78]:
+                - link "My Profile" [ref=e79] [cursor=pointer]:
+                  - /url: /legacy/MyProfile
+                  - img [ref=e80]
+                  - text: My Profile
+                - button [ref=e83] [cursor=pointer]:
+                  - img [ref=e84]
+            - listitem [ref=e86]:
+              - link "Notification Center" [ref=e88] [cursor=pointer]:
+                - /url: /legacy/NotificationCenter
+                - img [ref=e89]
+                - text: Notification Center
+            - listitem [ref=e91]:
+              - button "My Reports" [ref=e93] [cursor=pointer]:
+                - img [ref=e94]
+                - text: My Reports
+                - img [ref=e96]
+            - listitem [ref=e98]:
+              - link "Expiring Dashboard" [ref=e100] [cursor=pointer]:
+                - /url: /legacy/ExpiringSummary
+                - img [ref=e101]
+                - text: Expiring Dashboard
+            - listitem [ref=e103]:
+              - link "Evaluator Tool" [ref=e105] [cursor=pointer]:
+                - /url: /legacy/EvaluatorToolSearch
+                - img [ref=e106]
+                - text: Evaluator Tool
+            - listitem [ref=e108]:
+              - link "My OJT Objectives" [ref=e110] [cursor=pointer]:
+                - /url: /static/on-the-job-training/my-objectives
+                - img [ref=e111]
+                - text: My OJT Objectives
+        - generic [ref=e113]:
+          - heading "Administrator" [level=3] [ref=e114]
+          - list [ref=e115]:
+            - listitem [ref=e116]:
+              - button "Account Management" [ref=e118] [cursor=pointer]:
+                - img [ref=e119]
+                - text: Account Management
+                - img [ref=e121]
+            - listitem [ref=e123]:
+              - button "TRACER Asset Management" [ref=e125] [cursor=pointer]:
+                - img [ref=e126]
+                - text: TRACER Asset Management
+                - img [ref=e128]
+            - listitem [ref=e130]:
+              - button "On-the-Job Training" [ref=e132] [cursor=pointer]:
+                - img [ref=e133]
+                - text: On-the-Job Training
+                - img [ref=e135]
+            - listitem [ref=e137]:
+              - button "Program Assessments" [ref=e139] [cursor=pointer]:
+                - img [ref=e140]
+                - text: Program Assessments
+                - img [ref=e142]
+            - listitem [ref=e144]:
+              - link "Executive Dashboard" [ref=e146] [cursor=pointer]:
+                - /url: /legacy/ExecutiveDashboard
+                - img [ref=e147]
+                - text: Executive Dashboard
+            - listitem [ref=e149]:
+              - button "Task Management" [ref=e151] [cursor=pointer]:
+                - img [ref=e152]
+                - text: Task Management
+                - img [ref=e154]
+            - listitem [ref=e156]:
+              - button "Request/Authorizations" [ref=e158] [cursor=pointer]:
+                - img [ref=e159]
+                - text: Request/Authorizations
+                - img [ref=e161]
+            - listitem [ref=e163]:
+              - button "Suspensions" [ref=e165] [cursor=pointer]:
+                - img [ref=e166]
+                - text: Suspensions
+                - img [ref=e168]
+            - listitem [ref=e170]:
+              - button "Evaluation Authoring" [ref=e172] [cursor=pointer]:
+                - img [ref=e173]
+                - text: Evaluation Authoring
+                - img [ref=e175]
+            - listitem [ref=e177]:
+              - button "Print/Submit Evaluations" [ref=e179] [cursor=pointer]:
+                - img [ref=e180]
+                - text: Print/Submit Evaluations
+                - img [ref=e182]
+            - listitem [ref=e184]:
+              - button "Forms Builder" [ref=e186] [cursor=pointer]:
+                - img [ref=e187]
+                - text: Forms Builder
+                - img [ref=e189]
+            - listitem [ref=e191]:
+              - generic [ref=e192]:
+                - button "Reports" [ref=e193] [cursor=pointer]:
+                  - img [ref=e194]
+                  - text: Reports
+                  - img [ref=e196]
+                - list [ref=e198]:
+                  - listitem [ref=e199]:
+                    - link "Status View the task or evaluation status of users" [ref=e201] [cursor=pointer]:
+                      - /url: /legacy/TaskStatus
+                      - generic [ref=e202]: Status
+                      - generic [ref=e203]: View the task or evaluation status of users
+                  - listitem [ref=e204]:
+                    - link "Organizational Tool Status View user status by organizational tool" [ref=e206] [cursor=pointer]:
+                      - /url: /legacy/OrgToolStatus
+                      - generic [ref=e207]: Organizational Tool Status
+                      - generic [ref=e208]: View user status by organizational tool
+                  - listitem [ref=e209]:
+                    - link "Activity View evaluation activity for users" [ref=e211] [cursor=pointer]:
+                      - /url: /legacy/AssessmentActivity
+                      - generic [ref=e212]: Activity
+                      - generic [ref=e213]: View evaluation activity for users
+                  - listitem [ref=e214]:
+                    - link "Evaluator & Proctor Activity View evaluator and proctor activity" [ref=e216] [cursor=pointer]:
+                      - /url: /legacy/EvaluatorActivity
+                      - generic [ref=e217]: Evaluator & Proctor Activity
+                      - generic [ref=e218]: View evaluator and proctor activity
+                  - listitem [ref=e219]:
+                    - link "Company Task List Printer friendly version of task list" [ref=e221] [cursor=pointer]:
+                      - /url: /legacy/CompanyTaskListReport
+                      - generic [ref=e222]: Company Task List
+                      - generic [ref=e223]: Printer friendly version of task list
+                  - listitem [ref=e224]:
+                    - link "Expiring Dashboard View employees with expired/expiring evaluations and tasks" [ref=e226] [cursor=pointer]:
+                      - /url: /legacy/ExpiringSummary
+                      - generic [ref=e227]: Expiring Dashboard
+                      - generic [ref=e228]: View employees with expired/expiring evaluations and tasks
+                  - listitem [ref=e229]:
+                    - link "Qualifications Matrix Generate a list of qualified workers for selected tasks" [ref=e231] [cursor=pointer]:
+                      - /url: /legacy/QualificationsMatrix
+                      - generic [ref=e232]: Qualifications Matrix
+                      - generic [ref=e233]: Generate a list of qualified workers for selected tasks
+                  - listitem [ref=e234]:
+                    - link "Printable eCards Print your own eCards, eStickers or export eCard data and images to create your own" [ref=e236] [cursor=pointer]:
+                      - /url: /legacy/PrintableECard
+                      - generic [ref=e237]: Printable eCards
+                      - generic [ref=e238]: Print your own eCards, eStickers or export eCard data and images to create your own
+                  - listitem [ref=e239]:
+                    - link "Login Statistics View login stats for your users" [ref=e241] [cursor=pointer]:
+                      - /url: /legacy/LoginStatistics
+                      - generic [ref=e242]: Login Statistics
+                      - generic [ref=e243]: View login stats for your users
+                  - listitem [ref=e244]:
+                    - link "Instructor-Led Training Report View results for EWN ILT classes" [ref=e246] [cursor=pointer]:
+                      - /url: /legacy/InstructorLedTrainingReport
+                      - generic [ref=e247]: Instructor-Led Training Report
+                      - generic [ref=e248]: View results for EWN ILT classes
+                  - listitem [ref=e249]:
+                    - link "Evaluator Submission Outliers View the evaluator submission outliers for evaluations" [ref=e251] [cursor=pointer]:
+                      - /url: /static/evaluator-submission-outliers
+                      - generic [ref=e252]: Evaluator Submission Outliers
+                      - generic [ref=e253]: View the evaluator submission outliers for evaluations
+            - listitem [ref=e254]:
+              - button "Compliance Reports" [ref=e256] [cursor=pointer]:
+                - img [ref=e257]
+                - text: Compliance Reports
+                - img [ref=e259]
+            - listitem [ref=e261]:
+              - button "Other Admin Reports" [ref=e263] [cursor=pointer]:
+                - img [ref=e264]
+                - text: Other Admin Reports
+                - img [ref=e266]
+            - listitem [ref=e268]:
+              - button "Compliance Management" [ref=e270] [cursor=pointer]:
+                - img [ref=e271]
+                - text: Compliance Management
+                - img [ref=e273]
+        - img [ref=e276]
+        - paragraph [ref=e277]:
+          - text: © 2026 ENERGY worldnet, Inc.
+          - text: All rights reserved.
+    - main [ref=e281]:
+      - region "scrollable content" [ref=e286]:
+        - generic [ref=e288]:
+          - heading "Evaluator Submission Outliers Report" [level=1] [ref=e289]
+          - generic [ref=e292]:
+            - heading "Filters" [level=3] [ref=e293]
+            - generic [ref=e294]:
+              - group "Operator Company" [ref=e296]:
+                - generic [ref=e297]: Operator Company
+                - generic [ref=e299]:
+                  - img [ref=e300]
+                  - combobox [ref=e302]:
+                    - searchbox [ref=e304]
+              - group "Evaluator Company" [ref=e307]:
+                - generic [ref=e308]:
+                  - text: Evaluator Company
+                  - img [ref=e309]
+                - generic [ref=e312]:
+                  - img [ref=e313]
+                  - combobox [ref=e315]:
+                    - searchbox [ref=e317]
+              - group "Date Range" [ref=e320]:
+                - generic [ref=e321]: Date Range
+                - generic [ref=e323]:
+                  - group [ref=e325]:
+                    - textbox [ref=e326]: 2026-02-03
+                  - generic [ref=e327]: to
+                  - textbox [ref=e329]: 2026-03-06
+            - generic [ref=e330]:
+              - button "Clear Filters" [ref=e331] [cursor=pointer]
+              - button "Generate Report" [disabled] [ref=e332]:
+                - generic [ref=e333]: Generate Report
+```

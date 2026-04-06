@@ -1,0 +1,499 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - text: 
+  - generic [ref=e3]:
+    - link "" [ref=e5] [cursor=pointer]:
+      - /url: "#"
+      - generic [ref=e6]: 
+    - link "Logo" [ref=e7] [cursor=pointer]:
+      - /url: /legacy
+      - img "Logo" [ref=e8]
+    - list [ref=e10]:
+      - listitem [ref=e11]:
+        - link "Employee Image Julia Tkachenko Energy Worldnet" [ref=e12] [cursor=pointer]:
+          - /url: /legacy/MyProfile
+          - img "Employee Image" [ref=e13]
+          - generic [ref=e14]:
+            - generic [ref=e15]: Julia Tkachenko
+            - generic [ref=e16]: Energy Worldnet
+      - listitem [ref=e17]:
+        - button "" [ref=e18] [cursor=pointer]:
+          - generic [ref=e19]: 
+        - text: 
+      - listitem [ref=e20]:
+        - button "" [ref=e21] [cursor=pointer]:
+          - generic [ref=e22]: 
+        - text:   
+      - listitem [ref=e23]:
+        - link "" [ref=e24] [cursor=pointer]:
+          - /url: javascript:logoffCheck('/legacy/ApiProxy/Logout?isSecureBrowser=' + (typeof SafeExamBrowser !== 'undefined'));
+          - generic [ref=e25]: 
+  - generic [ref=e27]:
+    - tablist [ref=e31]:
+      - generic [ref=e32]:
+        - generic [ref=e33]:
+          - heading "EWN Internal" [level=1] [ref=e34]
+          - generic [ref=e35]:
+            - tab " Subscriptions " [selected] [ref=e36]:
+              - heading " Subscriptions " [level=4] [ref=e37]:
+                - button " Subscriptions " [expanded] [ref=e38] [cursor=pointer]:
+                  - link " Subscriptions " [ref=e40]:
+                    - /url: "#"
+                    - generic [ref=e41]: 
+                    - text: Subscriptions
+                    - generic [ref=e42]: 
+            - tabpanel " Subscriptions " [ref=e43]:
+              - list [ref=e45]:
+                - listitem [ref=e46]:
+                  - link "Company Search Manage company settings and contact information" [ref=e48] [cursor=pointer]:
+                    - /url: /legacy/CompanyAccount
+                    - generic [ref=e49]:
+                      - generic [ref=e50]: Company Search
+                      - generic [ref=e51]: Manage company settings and contact information
+                - listitem [ref=e52]:
+                  - link "User Search Manage employee information" [ref=e54] [cursor=pointer]:
+                    - /url: /legacy/AdminUserSearch
+                    - generic [ref=e55]:
+                      - generic [ref=e56]: User Search
+                      - generic [ref=e57]: Manage employee information
+                - listitem [ref=e58]:
+                  - link "Global User Roles Manage EWN Platform User Roles" [ref=e60] [cursor=pointer]:
+                    - /url: /legacy/GlobalUserRoles
+                    - generic [ref=e61]:
+                      - generic [ref=e62]: Global User Roles
+                      - generic [ref=e63]: Manage EWN Platform User Roles
+                - listitem [ref=e64]:
+                  - link "Subscription Types View detailed information about Subscription Types" [ref=e66] [cursor=pointer]:
+                    - /url: /legacy/SubscriptionTypeReport
+                    - generic [ref=e67]:
+                      - generic [ref=e68]: Subscription Types
+                      - generic [ref=e69]: View detailed information about Subscription Types
+                - listitem [ref=e70]:
+                  - link "Classrooms Create and assign users to classrooms" [ref=e72] [cursor=pointer]:
+                    - /url: /legacy/Classrooms
+                    - generic [ref=e73]:
+                      - generic [ref=e74]: Classrooms
+                      - generic [ref=e75]: Create and assign users to classrooms
+          - tab " Accounting " [ref=e77]:
+            - heading " Accounting " [level=4] [ref=e78]:
+              - button " Accounting " [ref=e79] [cursor=pointer]:
+                - link " Accounting " [ref=e81]:
+                  - /url: "#"
+                  - generic [ref=e82]: 
+                  - text: Accounting
+                  - generic [ref=e83]: 
+          - tab " Utilities " [ref=e85]:
+            - heading " Utilities " [level=4] [ref=e86]:
+              - button " Utilities " [ref=e87] [cursor=pointer]:
+                - link " Utilities " [ref=e89]:
+                  - /url: "#"
+                  - generic [ref=e90]: 
+                  - text: Utilities
+                  - generic [ref=e91]: 
+        - generic [ref=e92]:
+          - heading "My Toolbox" [level=1] [ref=e93]
+          - link " My Requirements" [ref=e98] [cursor=pointer]:
+            - /url: /legacy/MyRequirements
+            - generic [ref=e99]: 
+            - text: My Requirements
+          - link " My Forms" [ref=e104] [cursor=pointer]:
+            - /url: /legacy/NewSite?url=static/my-forms
+            - generic [ref=e105]: 
+            - text: My Forms
+          - link " My Profile" [ref=e110] [cursor=pointer]:
+            - /url: /legacy/MyProfile
+            - generic [ref=e111]: 
+            - text: My Profile
+          - link " Notification Center" [ref=e116] [cursor=pointer]:
+            - /url: /legacy/NotificationCenter
+            - generic [ref=e117]: 
+            - text: Notification Center
+          - tab " My Reports " [ref=e119]:
+            - heading " My Reports " [level=4] [ref=e120]:
+              - button " My Reports " [ref=e121] [cursor=pointer]:
+                - link " My Reports " [ref=e123]:
+                  - /url: "#"
+                  - generic [ref=e124]: 
+                  - text: My Reports
+                  - generic [ref=e125]: 
+          - link " Expiring Dashboard" [ref=e130] [cursor=pointer]:
+            - /url: /legacy/ExpiringSummary
+            - generic [ref=e131]: 
+            - text: Expiring Dashboard
+          - link " Evaluator Tool" [ref=e136] [cursor=pointer]:
+            - /url: /legacy/EvaluatorToolSearch
+            - generic [ref=e137]: 
+            - text: Evaluator Tool
+          - link " My OJT Objectives" [ref=e142] [cursor=pointer]:
+            - /url: /legacy/NewSite?url=static/on-the-job-training/my-objectives
+            - generic [ref=e143]: 
+            - text: My OJT Objectives
+        - generic [ref=e144]:
+          - heading "Administrator" [level=1] [ref=e145]
+          - tab " Account Management " [ref=e147]:
+            - heading " Account Management " [level=4] [ref=e148]:
+              - button " Account Management " [ref=e149] [cursor=pointer]:
+                - link " Account Management " [ref=e151]:
+                  - /url: "#"
+                  - generic [ref=e152]: 
+                  - text: Account Management
+                  - generic [ref=e153]: 
+          - tab " TRACER Asset Management " [ref=e155]:
+            - heading " TRACER Asset Management " [level=4] [ref=e156]:
+              - button " TRACER Asset Management " [ref=e157] [cursor=pointer]:
+                - link " TRACER Asset Management " [ref=e159]:
+                  - /url: "#"
+                  - generic [ref=e160]: 
+                  - text: TRACER Asset Management
+                  - generic [ref=e161]: 
+          - tab " On-the-Job Training " [ref=e163]:
+            - heading " On-the-Job Training " [level=4] [ref=e164]:
+              - button " On-the-Job Training " [ref=e165] [cursor=pointer]:
+                - link " On-the-Job Training " [ref=e167]:
+                  - /url: "#"
+                  - generic [ref=e168]: 
+                  - text: On-the-Job Training
+                  - generic [ref=e169]: 
+          - tab " Program Assessments " [ref=e171]:
+            - heading " Program Assessments " [level=4] [ref=e172]:
+              - button " Program Assessments " [ref=e173] [cursor=pointer]:
+                - link " Program Assessments " [ref=e175]:
+                  - /url: "#"
+                  - generic [ref=e176]: 
+                  - text: Program Assessments
+                  - generic [ref=e177]: 
+          - link " Executive Dashboard" [ref=e182] [cursor=pointer]:
+            - /url: /legacy/ExecutiveDashboard
+            - generic [ref=e183]: 
+            - text: Executive Dashboard
+          - tab " Task Management " [ref=e185]:
+            - heading " Task Management " [level=4] [ref=e186]:
+              - button " Task Management " [ref=e187] [cursor=pointer]:
+                - link " Task Management " [ref=e189]:
+                  - /url: "#"
+                  - generic [ref=e190]: 
+                  - text: Task Management
+                  - generic [ref=e191]: 
+          - tab " Request/Authorizations " [ref=e193]:
+            - heading " Request/Authorizations " [level=4] [ref=e194]:
+              - button " Request/Authorizations " [ref=e195] [cursor=pointer]:
+                - link " Request/Authorizations " [ref=e197]:
+                  - /url: "#"
+                  - generic [ref=e198]: 
+                  - text: Request/Authorizations
+                  - generic [ref=e199]: 
+          - tab " Suspensions " [ref=e201]:
+            - heading " Suspensions " [level=4] [ref=e202]:
+              - button " Suspensions " [ref=e203] [cursor=pointer]:
+                - link " Suspensions " [ref=e205]:
+                  - /url: "#"
+                  - generic [ref=e206]: 
+                  - text: Suspensions
+                  - generic [ref=e207]: 
+          - tab " Evaluation Authoring " [ref=e209]:
+            - heading " Evaluation Authoring " [level=4] [ref=e210]:
+              - button " Evaluation Authoring " [ref=e211] [cursor=pointer]:
+                - link " Evaluation Authoring " [ref=e213]:
+                  - /url: "#"
+                  - generic [ref=e214]: 
+                  - text: Evaluation Authoring
+                  - generic [ref=e215]: 
+          - tab " Print/Submit Evaluations " [ref=e217]:
+            - heading " Print/Submit Evaluations " [level=4] [ref=e218]:
+              - button " Print/Submit Evaluations " [ref=e219] [cursor=pointer]:
+                - link " Print/Submit Evaluations " [ref=e221]:
+                  - /url: "#"
+                  - generic [ref=e222]: 
+                  - text: Print/Submit Evaluations
+                  - generic [ref=e223]: 
+          - tab " Forms Builder " [ref=e225]:
+            - heading " Forms Builder " [level=4] [ref=e226]:
+              - button " Forms Builder " [ref=e227] [cursor=pointer]:
+                - link " Forms Builder " [ref=e229]:
+                  - /url: "#"
+                  - generic [ref=e230]: 
+                  - text: Forms Builder
+                  - generic [ref=e231]: 
+          - tab " Reports " [ref=e233]:
+            - heading " Reports " [level=4] [ref=e234]:
+              - button " Reports " [ref=e235] [cursor=pointer]:
+                - link " Reports " [ref=e237]:
+                  - /url: "#"
+                  - generic [ref=e238]: 
+                  - text: Reports
+                  - generic [ref=e239]: 
+          - tab " Compliance Reports " [ref=e241]:
+            - heading " Compliance Reports " [level=4] [ref=e242]:
+              - button " Compliance Reports " [ref=e243] [cursor=pointer]:
+                - link " Compliance Reports " [ref=e245]:
+                  - /url: "#"
+                  - generic [ref=e246]: 
+                  - text: Compliance Reports
+                  - generic [ref=e247]: 
+          - tab " Other Admin Reports " [ref=e249]:
+            - heading " Other Admin Reports " [level=4] [ref=e250]:
+              - button " Other Admin Reports " [ref=e251] [cursor=pointer]:
+                - link " Other Admin Reports " [ref=e253]:
+                  - /url: "#"
+                  - generic [ref=e254]: 
+                  - text: Other Admin Reports
+                  - generic [ref=e255]: 
+          - tab " Compliance Management " [ref=e257]:
+            - heading " Compliance Management " [level=4] [ref=e258]:
+              - button " Compliance Management " [ref=e259] [cursor=pointer]:
+                - link " Compliance Management " [ref=e261]:
+                  - /url: "#"
+                  - generic [ref=e262]: 
+                  - text: Compliance Management
+                  - generic [ref=e263]: 
+      - generic [ref=e264]:
+        - text: © 2026 ENERGY worldnet, Inc.
+        - generic [ref=e265]: All rights reserved.
+    - generic [ref=e267]:
+      - heading "Company Search" [level=1] [ref=e269]
+      - generic [ref=e270]:
+        - button " Add " [ref=e271] [cursor=pointer]:
+          - generic [ref=e272]: 
+          - text: Add
+          - generic [ref=e273]: 
+        - text: 
+      - generic [ref=e274]:
+        - list [ref=e275]:
+          - listitem [ref=e276]:
+            - link " Search" [ref=e277]:
+              - /url: ""
+              - generic [ref=e278]:
+                - generic [ref=e279]: 
+                - text: Search
+          - text:      
+        - generic [ref=e280]:
+          - generic [ref=e282]:
+            - generic [ref=e283]:
+              - generic [ref=e284]:
+                - generic [ref=e285]:
+                  - generic [ref=e286]: "Company Name / ID:"
+                  - textbox "Company Name / ID:" [active] [ref=e288]
+                - generic [ref=e289]:
+                  - generic [ref=e291]:
+                    - generic [ref=e292]: "Company Type:"
+                    - combobox "Company Type:" [ref=e294]:
+                      - option "All" [selected]
+                      - option "Client Operator"
+                      - option "Contractor"
+                      - option "Non-Client Operator"
+                      - option "Other"
+                      - option "Test Center"
+                      - option "Third-Party Evaluator (TPE)"
+                  - generic [ref=e296]:
+                    - generic [ref=e297]: "Account Status:"
+                    - combobox "Account Status:" [ref=e299]:
+                      - option "All" [selected]
+                      - option "Active"
+                      - option "Expired"
+                      - option "Suspended"
+                - generic [ref=e300]:
+                  - generic [ref=e302]:
+                    - generic [ref=e303]: "Subscription Type:"
+                    - combobox "Subscription Type:" [ref=e305]:
+                      - option "All" [selected]
+                      - option "Content Authoring & Records Management"
+                      - option "DOT Qualified Plumber Program"
+                      - option "eCMS"
+                      - 'option "eCMS: Compliance Management - Contractor"'
+                      - 'option "eCMS: Compliance Management - Operator"'
+                      - 'option "eCMS: Contractor Management"'
+                      - option "EWN Liquefied Natural Gas Content"
+                      - option "EWN Liquefied Natural Gas Content Add-On"
+                      - option "EWN Manufacturer Library"
+                      - option "EWN OQ Content Add-On"
+                      - option "EWN OQ Individual"
+                      - option "EWN Professional Development Content"
+                      - option "EWN Professional Development Content Add-On"
+                      - 'option "Hard Hat Computer-Based Simulations: Safety"'
+                      - option "Inactive Users"
+                      - option "LCMS"
+                      - option "MECP Hybrid"
+                      - option "Occupational Safety & Health (OSHA)"
+                      - option "On-the-Job Training"
+                      - option "Operator Qualification Program"
+                      - option "Pipeline Inspector Training Program"
+                      - option "PITP Administrator"
+                      - option "Program Assessments"
+                      - option "Propane"
+                      - option "Propane Individual"
+                      - option "Q2 Specification Administration"
+                      - option "Single Sign On"
+                      - option "Third-Party Evaluator"
+                      - option "TRACER Asset Management"
+                      - option "Wollam Groups API Q2 Specification - Complete"
+                      - option "Wollam Groups API Q2 Specification - Contract Review"
+                      - option "Wollam Groups API Q2 Specification - Purchasing and Critical Suppliers"
+                      - option "Wollam Groups API Q2 Specification - SRP Design and Development"
+                  - generic [ref=e307]:
+                    - generic [ref=e308]: "Subscription Range:"
+                    - generic [ref=e310]:
+                      - generic [ref=e312]:
+                        - textbox "Subscription Range:" [ref=e313]:
+                          - /placeholder: mm/dd/yyyy
+                        - button "" [ref=e315] [cursor=pointer]:
+                          - generic [ref=e316]: 
+                      - generic [ref=e317]: to
+                      - generic [ref=e319]:
+                        - textbox "to" [ref=e320]:
+                          - /placeholder: mm/dd/yyyy
+                        - button "" [ref=e322] [cursor=pointer]:
+                          - generic [ref=e323]: 
+                - generic [ref=e324]:
+                  - generic [ref=e326]:
+                    - generic [ref=e327]: "State:"
+                    - combobox "State:" [ref=e329]:
+                      - option "All" [selected]
+                      - option "Alabama"
+                      - option "Alaska"
+                      - option "American Samoa"
+                      - option "Arizona"
+                      - option "Arkansas"
+                      - option "California"
+                      - option "Colorado"
+                      - option "Connecticut"
+                      - option "Delaware"
+                      - option "District of Columbia"
+                      - option "Florida"
+                      - option "Georgia"
+                      - option "Guam"
+                      - option "Hawaii"
+                      - option "Idaho"
+                      - option "Illinois"
+                      - option "Indiana"
+                      - option "Iowa"
+                      - option "Kansas"
+                      - option "Kentucky"
+                      - option "Louisiana"
+                      - option "Maine"
+                      - option "Maryland"
+                      - option "Massachusetts"
+                      - option "Michigan"
+                      - option "Minnesota"
+                      - option "Mississippi"
+                      - option "Missouri"
+                      - option "Montana"
+                      - option "Nebraska"
+                      - option "Nevada"
+                      - option "New Hampshire"
+                      - option "New Jersey"
+                      - option "New Mexico"
+                      - option "New York"
+                      - option "North Carolina"
+                      - option "North Dakota"
+                      - option "Northern Mariana Islands"
+                      - option "Ohio"
+                      - option "Oklahoma"
+                      - option "Oregon"
+                      - option "Pennsylvania"
+                      - option "Puerto Rico"
+                      - option "Rhode Island"
+                      - option "South Carolina"
+                      - option "South Dakota"
+                      - option "Tennessee"
+                      - option "Texas"
+                      - option "U.S. Minor Outlying Islands"
+                      - option "Utah"
+                      - option "Vermont"
+                      - option "Virgin Islands of the U.S."
+                      - option "Virginia"
+                      - option "Washington"
+                      - option "West Virginia"
+                      - option "Wisconsin"
+                      - option "Wyoming"
+                  - generic [ref=e331]:
+                    - generic [ref=e332]: "Unpaid Invoices:"
+                    - generic [ref=e335] [cursor=pointer]:
+                      - 'checkbox "Unpaid Invoices: Yes" [ref=e336]'
+                      - text: "Yes"
+                - generic [ref=e337]:
+                  - generic [ref=e339]:
+                    - generic [ref=e340]: "TPE Relationship:"
+                    - combobox "TPE Relationship:" [ref=e342]:
+                      - option "All" [selected]
+                      - option "1 2 1 Evaluations"
+                      - option "_ArendelleATAC"
+                      - option "ABC ATAC"
+                      - option "Aim High Services"
+                      - option "Alpha-Omega Training"
+                      - option "American Piping Inspection"
+                      - option "ARC Randolph & Associates"
+                      - option "ASTAR, Inc."
+                      - option "ATAC DEMO"
+                      - option "Atmos Inspector"
+                      - option "Ayuda OQ Services, LLC"
+                      - option "Bandofire"
+                      - option "Bayardo Safety LLC"
+                      - option "Bob Walsh ATAC"
+                      - option "Bonaventure Safety, LLC"
+                      - option "Challenger Drilling, Inc. dba CDI Services"
+                      - option "Compliance Resources, LLC"
+                      - option "Construction 365/Safety 365, LLC"
+                      - option "Corrosion Y Proteccion"
+                      - option "Corrosion y Proteccion Ingenieria, SC"
+                      - option "CrossBridge Compliance, LLC (ATAC)"
+                      - option "DemoDemo"
+                      - option "Eclipse Safety Specialists"
+                      - option "EGW Utilities"
+                      - option "EWN ATAC"
+                      - option "Gajeske Incorporated (ATAC)"
+                      - option "Groebner and Associates"
+                      - option "J&J Evaluators"
+                      - option "JD Rellek"
+                      - option "Josh Demo Company"
+                      - option "KCI Consulting Services"
+                      - option "KMS Third-Party Evaluator"
+                      - option "Laborers International Union of North America (LIUNA) (aka New England Laborers Training Trust Fund)"
+                      - option "Lone Star Consulting"
+                      - option "Louisiana Delta Community College"
+                      - option "M.R. Services"
+                      - option "MAGRLS Inc"
+                      - option "Matthew Elliiott INC"
+                      - option "MCC Energy Groups Corporation"
+                      - option "MJS Safety LLC"
+                      - option "Morton X-Training Center"
+                      - option "Northwest Lineman College"
+                      - option "NTC"
+                      - option "Pintail Safety"
+                      - option "Pipeline Integrity Partners"
+                      - option "Pipeline Partners"
+                      - option "Premier Safety Resources"
+                      - option "Remote Training Professionals"
+                      - option "Ruckstuhl & Associates, Inc."
+                      - option "Safe Hands Safety"
+                      - option "Safetek Services Inc. (Safetek)"
+                      - option "Safety Advantage"
+                      - option "Southern Oklahoma Safety Services LLC (SOSS)"
+                      - option "Southland Safety LLC"
+                      - option "Stag Safety, LLC"
+                      - option "STOQ,LLC"
+                      - option "Sunrise Engineering"
+                      - option "Tanya's TPE Demo Co"
+                      - option "Texas Qualifications & Consulting, LLC"
+                      - option "TJ Inspection Training Center Inc (ATAC)"
+                      - option "Top Flight Safety, LLC"
+                      - option "Touchstone Training and Consulting"
+                      - option "Utility Technologies International"
+                      - option "VIJEE-TPE"
+                      - option "World Star Safety Solutions"
+                      - option "WSB Engineering (ATAC)"
+                      - option "Xcel NDT (Crossbridge) (ATAC)"
+                      - option "xray-3905-TPE"
+                  - generic [ref=e344]:
+                    - generic [ref=e345]: "Exclude Demos:"
+                    - generic [ref=e348] [cursor=pointer]:
+                      - 'checkbox "Exclude Demos: Yes" [ref=e349]'
+                      - text: "Yes"
+              - button " Search" [ref=e351] [cursor=pointer]:
+                - generic [ref=e352]: 
+                - text: Search
+            - text:  
+          - text:                                                                                                                                      
+  - generic: 
+```

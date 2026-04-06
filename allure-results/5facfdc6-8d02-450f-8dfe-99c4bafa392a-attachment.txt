@@ -1,0 +1,102 @@
+Error clicking the login button: ExpectError: expect(locator).toBeEnabled() failed
+
+Locator:  getByRole('button', { name: /Log In/i })
+Expected: enabled
+Received: disabled
+Timeout:  5000ms
+
+Call log:
+  - Expect "toBeEnabled" with timeout 5000ms
+  - waiting for getByRole('button', { name: /Log In/i })
+    8 × locator resolved to <button class="primary" data-v-ff526fde="" disabled="disabled"> Log In </button>
+      - unexpected value "disabled"
+
+    at LoginPage.expectLoginButtonEnabled (C:\Automation\EWN-FrameworkTest\pages\LoginPage.ts:63:40)
+    at LoginPage.clickLoginButton (C:\Automation\EWN-FrameworkTest\pages\LoginPage.ts:70:24)
+    at C:\Automation\EWN-FrameworkTest\tests\LoginPage.spec.ts:52:19 {
+  matcherResult: {
+    message: '\x1B[2mexpect(\x1B[22m\x1B[31mlocator\x1B[39m\x1B[2m).\x1B[22mtoBeEnabled\x1B[2m(\x1B[22m\x1B[2m)\x1B[22m failed\n' +
+      '\n' +
+      "Locator:  getByRole('button', { name: /Log In/i })\n" +
+      'Expected: enabled\n' +
+      'Received: disabled\n' +
+      'Timeout:  5000ms\n' +
+      '\n' +
+      'Call log:\n' +
+      '\x1B[2m  - Expect "toBeEnabled" with timeout 5000ms\x1B[22m\n' +
+      "\x1B[2m  - waiting for getByRole('button', { name: /Log In/i })\x1B[22m\n" +
+      '\x1B[2m    8 × locator resolved to <button class="primary" data-v-ff526fde="" disabled="disabled"> Log In </button>\x1B[22m\n' +
+      '\x1B[2m      - unexpected value "disabled"\x1B[22m\n',
+    pass: false,
+    actual: 'disabled',
+    name: 'toBeEnabled',
+    expected: 'enabled',
+    log: [
+      '  - Expect "toBeEnabled" with timeout 5000ms',
+      "  - waiting for getByRole('button', { name: /Log In/i })",
+      '    8 × locator resolved to <button class="primary" data-v-ff526fde="" disabled="disabled"> Log In </button>',
+      '      - unexpected value "disabled"'
+    ],
+    timeout: 5000
+  },
+  [Symbol(step)]: {
+    category: 'expect',
+    apiName: 'expect.toBeEnabled',
+    title: `Expect "toBeEnabled" getByRole('button', { name: /Log In/i })`,
+    shortTitle: 'Expect "toBeEnabled"',
+    params: undefined,
+    infectParentStepsWithError: undefined,
+    stepId: 'expect@27',
+    group: undefined,
+    boxedStack: undefined,
+    location: {
+      file: 'C:\\Automation\\EWN-FrameworkTest\\pages\\LoginPage.ts',
+      line: 63,
+      column: 40,
+      function: 'LoginPage.expectLoginButtonEnabled'
+    },
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [TestInfoImpl],
+      _stepId: 'expect@27',
+      _title: `Expect "toBeEnabled" getByRole('button', { name: /Log In/i })`,
+      _parentStep: undefined,
+      skip: [Function (anonymous)]
+    },
+    complete: [Function: complete],
+    endWallTime: 1772729487587,
+    error: {
+      message: 'Error: \x1B[2mexpect(\x1B[22m\x1B[31mlocator\x1B[39m\x1B[2m).\x1B[22mtoBeEnabled\x1B[2m(\x1B[22m\x1B[2m)\x1B[22m failed\n' +
+        '\n' +
+        "Locator:  getByRole('button', { name: /Log In/i })\n" +
+        'Expected: enabled\n' +
+        'Received: disabled\n' +
+        'Timeout:  5000ms\n' +
+        '\n' +
+        'Call log:\n' +
+        '\x1B[2m  - Expect "toBeEnabled" with timeout 5000ms\x1B[22m\n' +
+        "\x1B[2m  - waiting for getByRole('button', { name: /Log In/i })\x1B[22m\n" +
+        '\x1B[2m    8 × locator resolved to <button class="primary" data-v-ff526fde="" disabled="disabled"> Log In </button>\x1B[22m\n' +
+        '\x1B[2m      - unexpected value "disabled"\x1B[22m\n',
+      stack: 'Error: \x1B[2mexpect(\x1B[22m\x1B[31mlocator\x1B[39m\x1B[2m).\x1B[22mtoBeEnabled\x1B[2m(\x1B[22m\x1B[2m)\x1B[22m failed\n' +
+        '\n' +
+        "Locator:  getByRole('button', { name: /Log In/i })\n" +
+        'Expected: enabled\n' +
+        'Received: disabled\n' +
+        'Timeout:  5000ms\n' +
+        '\n' +
+        'Call log:\n' +
+        '\x1B[2m  - Expect "toBeEnabled" with timeout 5000ms\x1B[22m\n' +
+        "\x1B[2m  - waiting for getByRole('button', { name: /Log In/i })\x1B[22m\n" +
+        '\x1B[2m    8 × locator resolved to <button class="primary" data-v-ff526fde="" disabled="disabled"> Log In </button>\x1B[22m\n' +
+        '\x1B[2m      - unexpected value "disabled"\x1B[22m\n' +
+        '\n' +
+        '    at LoginPage.expectLoginButtonEnabled (C:\\Automation\\EWN-FrameworkTest\\pages\\LoginPage.ts:63:40)\n' +
+        '    at LoginPage.clickLoginButton (C:\\Automation\\EWN-FrameworkTest\\pages\\LoginPage.ts:70:24)\n' +
+        '    at C:\\Automation\\EWN-FrameworkTest\\tests\\LoginPage.spec.ts:52:19',
+      cause: undefined
+    }
+  }
+}

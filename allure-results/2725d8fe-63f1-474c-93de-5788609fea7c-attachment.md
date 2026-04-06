@@ -1,0 +1,69 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - text: 
+  - generic [ref=e3]:
+    - link "" [ref=e5] [cursor=pointer]:
+      - /url: "#"
+      - generic [ref=e6]: 
+    - link:
+      - /url: /legacy
+    - list [ref=e8]:
+      - listitem [ref=e9]:
+        - link "Employee Image Andry Flitt ADNIM Julia_Transfer - USA (Automation)" [ref=e10] [cursor=pointer]:
+          - /url: /legacy/MyProfile
+          - img "Employee Image" [ref=e11]
+          - generic [ref=e12]:
+            - generic [ref=e13]: Andry Flitt ADNIM
+            - generic [ref=e14]: Julia_Transfer - USA (Automation)
+      - listitem [ref=e15]:
+        - button "" [ref=e16] [cursor=pointer]:
+          - generic [ref=e17]: 
+        - text: 
+      - listitem [ref=e18]:
+        - button "" [ref=e19] [cursor=pointer]:
+          - generic [ref=e20]: 
+        - text:   
+      - listitem [ref=e21]:
+        - link "" [ref=e22] [cursor=pointer]:
+          - /url: javascript:logoffCheck('/legacy/ApiProxy/Logout?isSecureBrowser=' + (typeof SafeExamBrowser !== 'undefined'));
+          - generic [ref=e23]: 
+  - generic [ref=e25]:
+    - generic:
+      - generic:
+        - generic:
+          - tablist
+    - generic [ref=e26]:
+      - generic [ref=e27]: Check here for system updates and more.
+      - text:     
+      - generic [ref=e29]:
+        - heading "Here are a few helpful tips:" [level=3] [ref=e30]
+        - list [ref=e31]:
+          - listitem [ref=e32]:
+            - text: The power to set your own homepage is now in your hands. It's easy! In the left menu simply click the star icon
+            - generic [ref=e33]: 
+            - text: to "favorite" the page! Next time you log in to Energy Worldnet, your homepage will be the page that you "favorited." Until you set a new homepage, this help page will be your default.
+          - listitem [ref=e34]: Never miss an update again! We will notify you of system updates through the Information Bar which will appear at the top of every page when an update is scheduled.
+          - listitem [ref=e35]:
+            - text: Click
+            - strong [ref=e37]: Notifications
+            - generic [ref=e38]: 
+            - text: to see any alerts that need your attention.
+          - listitem [ref=e39]:
+            - generic [ref=e40]:
+              - text: Need help with an issue? Want to give us some feedback? We are here to help! Click
+              - strong [ref=e41]: Support
+            - generic [ref=e42]: 
+            - text: in the top-right corner and let us know what you think.
+          - listitem [ref=e43]:
+            - text: Need more space for your reports? To maximize your screen space, hit the menu button
+            - generic [ref=e44]: 
+            - text: in the top-left corner and the menu will slide away.
+          - listitem [ref=e45]:
+            - text: Scroll down far enough on a page and you will see an arrow icon
+            - generic [ref=e46]: 
+            - text: appear in the bottom-right corner. Click the arrow icon if you need to go back to the top of the page!
+          - listitem [ref=e47]: We will continue to make new additions to the system over the course of this year. Fear not! We will roll out each new feature and enhancement to build upon the last release. These changes will create a new system experience that is enjoyable and user-friendly.
+  - generic: 
+```

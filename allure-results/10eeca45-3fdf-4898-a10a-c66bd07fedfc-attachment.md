@@ -1,0 +1,368 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - text: 
+  - generic [ref=e3]:
+    - link "" [ref=e5] [cursor=pointer]:
+      - /url: "#"
+      - generic [ref=e6]: 
+    - link "Logo" [ref=e7] [cursor=pointer]:
+      - /url: /legacy
+      - img "Logo" [ref=e8]
+    - list [ref=e10]:
+      - listitem [ref=e11]:
+        - link "Employee Image Julia Tkachenko Energy Worldnet" [ref=e12] [cursor=pointer]:
+          - /url: /legacy/MyProfile
+          - img "Employee Image" [ref=e13]
+          - generic [ref=e14]:
+            - generic [ref=e15]: Julia Tkachenko
+            - generic [ref=e16]: Energy Worldnet
+      - listitem [ref=e17]:
+        - button "" [ref=e18] [cursor=pointer]:
+          - generic [ref=e19]: 
+        - text: 
+      - listitem [ref=e20]:
+        - button "" [ref=e21] [cursor=pointer]:
+          - generic [ref=e22]: 
+        - text:   
+      - listitem [ref=e23]:
+        - link "" [ref=e24] [cursor=pointer]:
+          - /url: javascript:logoffCheck('/legacy/ApiProxy/Logout?isSecureBrowser=' + (typeof SafeExamBrowser !== 'undefined'));
+          - generic [ref=e25]: 
+  - generic [ref=e27]:
+    - tablist [ref=e31]:
+      - generic [ref=e32]:
+        - generic [ref=e33]:
+          - heading "EWN Internal" [level=1] [ref=e34]
+          - tab " Subscriptions " [ref=e36]:
+            - heading " Subscriptions " [level=4] [ref=e37]:
+              - button " Subscriptions " [ref=e38] [cursor=pointer]:
+                - link " Subscriptions " [ref=e40]:
+                  - /url: "#"
+                  - generic [ref=e41]: 
+                  - text: Subscriptions
+                  - generic [ref=e42]: 
+          - tab " Accounting " [ref=e44]:
+            - heading " Accounting " [level=4] [ref=e45]:
+              - button " Accounting " [ref=e46] [cursor=pointer]:
+                - link " Accounting " [ref=e48]:
+                  - /url: "#"
+                  - generic [ref=e49]: 
+                  - text: Accounting
+                  - generic [ref=e50]: 
+          - generic [ref=e51]:
+            - tab " Utilities " [selected] [ref=e52]:
+              - heading " Utilities " [level=4] [ref=e53]:
+                - button " Utilities " [expanded] [ref=e54] [cursor=pointer]:
+                  - link " Utilities " [ref=e56]:
+                    - /url: "#"
+                    - generic [ref=e57]: 
+                    - text: Utilities
+                    - generic [ref=e58]: 
+            - tabpanel " Utilities " [ref=e59]:
+              - list [ref=e61]:
+                - listitem [ref=e62]:
+                  - link "eCard Data Export" [ref=e64] [cursor=pointer]:
+                    - /url: /legacy/CardDataExport
+                    - generic [ref=e66]: eCard Data Export
+                - listitem [ref=e67]:
+                  - link "ISN Manual Upload" [ref=e69] [cursor=pointer]:
+                    - /url: /legacy/IsnManualExport
+                    - generic [ref=e71]: ISN Manual Upload
+                - listitem [ref=e72]:
+                  - link "Enterprise Associations" [ref=e74] [cursor=pointer]:
+                    - /url: /legacy/EnterpriseAssociations
+                    - generic [ref=e76]: Enterprise Associations
+                - listitem [ref=e77]:
+                  - link "Bulk Records Import" [ref=e79] [cursor=pointer]:
+                    - /url: /legacy/EwnImport
+                    - generic [ref=e81]: Bulk Records Import
+                - listitem [ref=e82]:
+                  - link "Condition Usage" [ref=e84] [cursor=pointer]:
+                    - /url: /legacy/ConditionUsageReport
+                    - generic [ref=e86]: Condition Usage
+                - listitem [ref=e87]:
+                  - link "Import Evaluator Qualifications" [ref=e89] [cursor=pointer]:
+                    - /url: /legacy/EvaluatorQualificationsImport
+                    - generic [ref=e91]: Import Evaluator Qualifications
+                - listitem [ref=e92]:
+                  - link "Standard Data Transfers" [ref=e94] [cursor=pointer]:
+                    - /url: /legacy/NewSite?url=static/standard-data-transfers
+                    - generic [ref=e96]: Standard Data Transfers
+        - generic [ref=e97]:
+          - heading "My Toolbox" [level=1] [ref=e98]
+          - link " My Requirements" [ref=e103] [cursor=pointer]:
+            - /url: /legacy/MyRequirements
+            - generic [ref=e104]: 
+            - text: My Requirements
+          - link " My Forms" [ref=e109] [cursor=pointer]:
+            - /url: /legacy/NewSite?url=static/my-forms
+            - generic [ref=e110]: 
+            - text: My Forms
+          - link " My Profile" [ref=e115] [cursor=pointer]:
+            - /url: /legacy/MyProfile
+            - generic [ref=e116]: 
+            - text: My Profile
+          - link " Notification Center" [ref=e121] [cursor=pointer]:
+            - /url: /legacy/NotificationCenter
+            - generic [ref=e122]: 
+            - text: Notification Center
+          - tab " My Reports " [ref=e124]:
+            - heading " My Reports " [level=4] [ref=e125]:
+              - button " My Reports " [ref=e126] [cursor=pointer]:
+                - link " My Reports " [ref=e128]:
+                  - /url: "#"
+                  - generic [ref=e129]: 
+                  - text: My Reports
+                  - generic [ref=e130]: 
+          - link " Expiring Dashboard" [ref=e135] [cursor=pointer]:
+            - /url: /legacy/ExpiringSummary
+            - generic [ref=e136]: 
+            - text: Expiring Dashboard
+          - link " Evaluator Tool" [ref=e141] [cursor=pointer]:
+            - /url: /legacy/EvaluatorToolSearch
+            - generic [ref=e142]: 
+            - text: Evaluator Tool
+          - link " My OJT Objectives" [ref=e147] [cursor=pointer]:
+            - /url: /legacy/NewSite?url=static/on-the-job-training/my-objectives
+            - generic [ref=e148]: 
+            - text: My OJT Objectives
+        - generic [ref=e149]:
+          - heading "Administrator" [level=1] [ref=e150]
+          - tab " Account Management " [ref=e152]:
+            - heading " Account Management " [level=4] [ref=e153]:
+              - button " Account Management " [ref=e154] [cursor=pointer]:
+                - link " Account Management " [ref=e156]:
+                  - /url: "#"
+                  - generic [ref=e157]: 
+                  - text: Account Management
+                  - generic [ref=e158]: 
+          - tab " TRACER Asset Management " [ref=e160]:
+            - heading " TRACER Asset Management " [level=4] [ref=e161]:
+              - button " TRACER Asset Management " [ref=e162] [cursor=pointer]:
+                - link " TRACER Asset Management " [ref=e164]:
+                  - /url: "#"
+                  - generic [ref=e165]: 
+                  - text: TRACER Asset Management
+                  - generic [ref=e166]: 
+          - tab " On-the-Job Training " [ref=e168]:
+            - heading " On-the-Job Training " [level=4] [ref=e169]:
+              - button " On-the-Job Training " [ref=e170] [cursor=pointer]:
+                - link " On-the-Job Training " [ref=e172]:
+                  - /url: "#"
+                  - generic [ref=e173]: 
+                  - text: On-the-Job Training
+                  - generic [ref=e174]: 
+          - tab " Program Assessments " [ref=e176]:
+            - heading " Program Assessments " [level=4] [ref=e177]:
+              - button " Program Assessments " [ref=e178] [cursor=pointer]:
+                - link " Program Assessments " [ref=e180]:
+                  - /url: "#"
+                  - generic [ref=e181]: 
+                  - text: Program Assessments
+                  - generic [ref=e182]: 
+          - link " Executive Dashboard" [ref=e187] [cursor=pointer]:
+            - /url: /legacy/ExecutiveDashboard
+            - generic [ref=e188]: 
+            - text: Executive Dashboard
+          - tab " Task Management " [ref=e190]:
+            - heading " Task Management " [level=4] [ref=e191]:
+              - button " Task Management " [ref=e192] [cursor=pointer]:
+                - link " Task Management " [ref=e194]:
+                  - /url: "#"
+                  - generic [ref=e195]: 
+                  - text: Task Management
+                  - generic [ref=e196]: 
+          - tab " Request/Authorizations " [ref=e198]:
+            - heading " Request/Authorizations " [level=4] [ref=e199]:
+              - button " Request/Authorizations " [ref=e200] [cursor=pointer]:
+                - link " Request/Authorizations " [ref=e202]:
+                  - /url: "#"
+                  - generic [ref=e203]: 
+                  - text: Request/Authorizations
+                  - generic [ref=e204]: 
+          - tab " Suspensions " [ref=e206]:
+            - heading " Suspensions " [level=4] [ref=e207]:
+              - button " Suspensions " [ref=e208] [cursor=pointer]:
+                - link " Suspensions " [ref=e210]:
+                  - /url: "#"
+                  - generic [ref=e211]: 
+                  - text: Suspensions
+                  - generic [ref=e212]: 
+          - tab " Evaluation Authoring " [ref=e214]:
+            - heading " Evaluation Authoring " [level=4] [ref=e215]:
+              - button " Evaluation Authoring " [ref=e216] [cursor=pointer]:
+                - link " Evaluation Authoring " [ref=e218]:
+                  - /url: "#"
+                  - generic [ref=e219]: 
+                  - text: Evaluation Authoring
+                  - generic [ref=e220]: 
+          - tab " Print/Submit Evaluations " [ref=e222]:
+            - heading " Print/Submit Evaluations " [level=4] [ref=e223]:
+              - button " Print/Submit Evaluations " [ref=e224] [cursor=pointer]:
+                - link " Print/Submit Evaluations " [ref=e226]:
+                  - /url: "#"
+                  - generic [ref=e227]: 
+                  - text: Print/Submit Evaluations
+                  - generic [ref=e228]: 
+          - tab " Forms Builder " [ref=e230]:
+            - heading " Forms Builder " [level=4] [ref=e231]:
+              - button " Forms Builder " [ref=e232] [cursor=pointer]:
+                - link " Forms Builder " [ref=e234]:
+                  - /url: "#"
+                  - generic [ref=e235]: 
+                  - text: Forms Builder
+                  - generic [ref=e236]: 
+          - tab " Reports " [ref=e238]:
+            - heading " Reports " [level=4] [ref=e239]:
+              - button " Reports " [ref=e240] [cursor=pointer]:
+                - link " Reports " [ref=e242]:
+                  - /url: "#"
+                  - generic [ref=e243]: 
+                  - text: Reports
+                  - generic [ref=e244]: 
+          - tab " Compliance Reports " [ref=e246]:
+            - heading " Compliance Reports " [level=4] [ref=e247]:
+              - button " Compliance Reports " [ref=e248] [cursor=pointer]:
+                - link " Compliance Reports " [ref=e250]:
+                  - /url: "#"
+                  - generic [ref=e251]: 
+                  - text: Compliance Reports
+                  - generic [ref=e252]: 
+          - tab " Other Admin Reports " [ref=e254]:
+            - heading " Other Admin Reports " [level=4] [ref=e255]:
+              - button " Other Admin Reports " [ref=e256] [cursor=pointer]:
+                - link " Other Admin Reports " [ref=e258]:
+                  - /url: "#"
+                  - generic [ref=e259]: 
+                  - text: Other Admin Reports
+                  - generic [ref=e260]: 
+          - tab " Compliance Management " [ref=e262]:
+            - heading " Compliance Management " [level=4] [ref=e263]:
+              - button " Compliance Management " [ref=e264] [cursor=pointer]:
+                - link " Compliance Management " [ref=e266]:
+                  - /url: "#"
+                  - generic [ref=e267]: 
+                  - text: Compliance Management
+                  - generic [ref=e268]: 
+      - generic [ref=e269]:
+        - text: © 2026 ENERGY worldnet, Inc.
+        - generic [ref=e270]: All rights reserved.
+    - generic [ref=e273]:
+      - heading "Enterprise Associations" [level=1] [ref=e275]
+      - generic [ref=e276]:
+        - generic [ref=e277]:
+          - generic [ref=e278]: "Enterprise Company:"
+          - combobox "Enterprise Company:" [ref=e280]:
+            - option "-- Select --"
+            - option "(NGA) Northeast Gas Association" [selected]
+            - option "(VGOA) Virginia Gas Operators Association"
+            - option "Chesapeake Utilities - Distribution"
+            - option "Edge Integrity"
+            - option "EWN Occupational Safety and Health (OSHA)"
+            - option "EWN OSHA-DEMO"
+            - option "InfraSource Inc. (Quanta)"
+            - option "Midwest Energy Association (MEA)"
+            - option "Morton Natural Gas (Demo)"
+            - option "Morton Pipeline Company"
+            - option "NTC"
+            - option "Propane Gas Association of New England (PGANE)"
+        - generic [ref=e281]:
+          - group "Available Companies" [ref=e282]:
+            - generic [ref=e284]:
+              - searchbox "Search Available Companies" [ref=e285]
+              - generic:
+                - img
+            - generic [ref=e286]:
+              - generic [ref=e287]: Available Companies
+              - checkbox "Select all Available Companies" [ref=e288] [cursor=pointer]
+            - listbox "Available Companies" [ref=e289]:
+              - generic [ref=e290]:
+                - option "_Allison's Operator _Allison's Operator" [ref=e292]:
+                  - generic: _Allison's Operator
+                  - checkbox "_Allison's Operator" [ref=e293] [cursor=pointer]
+                - option "2K Construction (DEMO) 2K Construction (DEMO)" [ref=e295]:
+                  - generic: 2K Construction (DEMO)
+                  - checkbox "2K Construction (DEMO)" [ref=e296] [cursor=pointer]
+                - option "3BG Logistics 3BG Logistics" [ref=e298]:
+                  - generic: 3BG Logistics
+                  - checkbox "3BG Logistics" [ref=e299] [cursor=pointer]
+                - option "4 A OperatingVeroTest 4 A OperatingVeroTest" [ref=e301]:
+                  - generic: 4 A OperatingVeroTest
+                  - checkbox "4 A OperatingVeroTest" [ref=e302] [cursor=pointer]
+                - option "ABC ATAC ABC ATAC" [ref=e304]:
+                  - generic: ABC ATAC
+                  - checkbox "ABC ATAC" [ref=e305] [cursor=pointer]
+                - option "Acme Contractor - DH Testing Acme Contractor - DH Testing" [ref=e307]:
+                  - generic: Acme Contractor - DH Testing
+                  - checkbox "Acme Contractor - DH Testing" [ref=e308] [cursor=pointer]
+          - group "Transfer controls" [ref=e309]:
+            - button "Move to Associated Companies" [disabled] [ref=e310]:
+              - generic [ref=e311]: 
+            - button "Move to Available Companies" [disabled] [ref=e312]:
+              - generic [ref=e313]: 
+          - group "Associated Companies" [ref=e314]:
+            - generic [ref=e316]:
+              - searchbox "Search Associated Companies" [ref=e317]
+              - generic:
+                - img
+            - generic [ref=e318]:
+              - generic [ref=e319]: Associated Companies
+              - checkbox "Select all Associated Companies" [ref=e320] [cursor=pointer]
+            - listbox "Associated Companies" [ref=e321]:
+              - generic [ref=e322]:
+                - option "Energy Worldnet Energy Worldnet" [ref=e324]:
+                  - generic: Energy Worldnet
+                  - checkbox "Energy Worldnet" [ref=e325] [cursor=pointer]
+                - option "_ArendelleATAC _ArendelleATAC" [ref=e327]:
+                  - generic: _ArendelleATAC
+                  - checkbox "_ArendelleATAC" [ref=e328] [cursor=pointer]
+                - option "2K Operating (DEMO) 2K Operating (DEMO)" [ref=e330]:
+                  - generic: 2K Operating (DEMO)
+                  - checkbox "2K Operating (DEMO)" [ref=e331] [cursor=pointer]
+                - option "ABC Test Company-Operator ABC Test Company-Operator" [ref=e333]:
+                  - generic: ABC Test Company-Operator
+                  - checkbox "ABC Test Company-Operator" [ref=e334] [cursor=pointer]
+                - option "Acme Operator - DH Testing Acme Operator - DH Testing" [ref=e336]:
+                  - generic: Acme Operator - DH Testing
+                  - checkbox "Acme Operator - DH Testing" [ref=e337] [cursor=pointer]
+                - option "Acord Contractor - Allison Acord Contractor - Allison" [ref=e339]:
+                  - generic: Acord Contractor - Allison
+                  - checkbox "Acord Contractor - Allison" [ref=e340] [cursor=pointer]
+                - option "Acord Operator - Allison Acord Operator - Allison" [ref=e342]:
+                  - generic: Acord Operator - Allison
+                  - checkbox "Acord Operator - Allison" [ref=e343] [cursor=pointer]
+                - option "Adalynn & 2 Adalynn & 2" [ref=e345]:
+                  - generic: Adalynn & 2
+                  - checkbox "Adalynn & 2" [ref=e346] [cursor=pointer]
+                - option "Adalynn 3 Adalynn 3" [ref=e348]:
+                  - generic: Adalynn 3
+                  - checkbox "Adalynn 3" [ref=e349] [cursor=pointer]
+                - option "Adalynn Operator Adalynn Operator" [ref=e351]:
+                  - generic: Adalynn Operator
+                  - checkbox "Adalynn Operator" [ref=e352] [cursor=pointer]
+                - option "Adalynn's Contracting Adalynn's Contracting" [ref=e354]:
+                  - generic: Adalynn's Contracting
+                  - checkbox "Adalynn's Contracting" [ref=e355] [cursor=pointer]
+                - option "Adam Jakaitis (Aux Sable Liquid Products) PITP Adam Jakaitis (Aux Sable Liquid Products) PITP" [ref=e357]:
+                  - generic: Adam Jakaitis (Aux Sable Liquid Products) PITP
+                  - checkbox "Adam Jakaitis (Aux Sable Liquid Products) PITP" [ref=e358] [cursor=pointer]
+                - option "Adonai Oil and Gas Adonai Oil and Gas" [ref=e360]:
+                  - generic: Adonai Oil and Gas
+                  - checkbox "Adonai Oil and Gas" [ref=e361] [cursor=pointer]
+                - option "akdemoCO akdemoCO" [ref=e363]:
+                  - generic: akdemoCO
+                  - checkbox "akdemoCO" [ref=e364] [cursor=pointer]
+                - option "All-Gas & Equipment Company All-Gas & Equipment Company" [ref=e366]:
+                  - generic: All-Gas & Equipment Company
+                  - checkbox "All-Gas & Equipment Company" [ref=e367] [cursor=pointer]
+      - generic [ref=e369]:
+        - button " Save" [disabled] [ref=e370]:
+          - generic [ref=e371]: 
+          - text: Save
+        - button " Cancel" [disabled] [ref=e372]:
+          - generic [ref=e373]: 
+          - text: Cancel
+  - generic: 
+```

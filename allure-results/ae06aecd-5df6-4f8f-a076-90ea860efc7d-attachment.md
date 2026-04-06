@@ -1,0 +1,200 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - text: 
+  - generic [ref=e3]:
+    - link "" [ref=e5] [cursor=pointer]:
+      - /url: "#"
+      - generic [ref=e6]: 
+    - link "Logo" [ref=e7] [cursor=pointer]:
+      - /url: /legacy
+      - img "Logo" [ref=e8]
+    - list [ref=e10]:
+      - listitem [ref=e11]:
+        - link "Employee Image Andry Flitt ADNIM Julia_Transfer - USA (Automation)" [ref=e12] [cursor=pointer]:
+          - /url: /legacy/MyProfile
+          - img "Employee Image" [ref=e13]
+          - generic [ref=e14]:
+            - generic [ref=e15]: Andry Flitt ADNIM
+            - generic [ref=e16]: Julia_Transfer - USA (Automation)
+      - listitem [ref=e17]:
+        - button "" [ref=e18] [cursor=pointer]:
+          - generic [ref=e19]: 
+        - text: 
+      - listitem [ref=e20]:
+        - button "" [ref=e21] [cursor=pointer]:
+          - generic [ref=e22]: 
+        - text:   
+      - listitem [ref=e23]:
+        - link "" [ref=e24] [cursor=pointer]:
+          - /url: javascript:logoffCheck('/legacy/ApiProxy/Logout?isSecureBrowser=' + (typeof SafeExamBrowser !== 'undefined'));
+          - generic [ref=e25]: 
+  - generic [ref=e27]:
+    - tablist [ref=e31]:
+      - generic [ref=e32]:
+        - generic [ref=e33]:
+          - heading "My Toolbox" [level=1] [ref=e34]
+          - link " My Requirements" [ref=e39] [cursor=pointer]:
+            - /url: /legacy/MyRequirements
+            - generic [ref=e40]: 
+            - text: My Requirements
+          - link " My Forms" [ref=e45] [cursor=pointer]:
+            - /url: /legacy/NewSite?url=static/my-forms
+            - generic [ref=e46]: 
+            - text: My Forms
+          - link " My Profile" [ref=e51] [cursor=pointer]:
+            - /url: /legacy/MyProfile
+            - generic [ref=e52]: 
+            - text: My Profile
+          - link " Notification Center" [ref=e57] [cursor=pointer]:
+            - /url: /legacy/NotificationCenter
+            - generic [ref=e58]: 
+            - text: Notification Center
+          - tab " My Reports " [ref=e60]:
+            - heading " My Reports " [level=4] [ref=e61]:
+              - button " My Reports " [ref=e62] [cursor=pointer]:
+                - link " My Reports " [ref=e64]:
+                  - /url: "#"
+                  - generic [ref=e65]: 
+                  - text: My Reports
+                  - generic [ref=e66]: 
+          - link " Expiring Dashboard" [ref=e71] [cursor=pointer]:
+            - /url: /legacy/ExpiringSummary
+            - generic [ref=e72]: 
+            - text: Expiring Dashboard
+          - link " Evaluator Tool" [ref=e77] [cursor=pointer]:
+            - /url: /legacy/EvaluatorToolSearch
+            - generic [ref=e78]: 
+            - text: Evaluator Tool
+        - generic [ref=e79]:
+          - heading "Administrator" [level=1] [ref=e80]
+          - tab " Account Management " [ref=e82]:
+            - heading " Account Management " [level=4] [ref=e83]:
+              - button " Account Management " [ref=e84] [cursor=pointer]:
+                - link " Account Management " [ref=e86]:
+                  - /url: "#"
+                  - generic [ref=e87]: 
+                  - text: Account Management
+                  - generic [ref=e88]: 
+          - link " Executive Dashboard" [ref=e93] [cursor=pointer]:
+            - /url: /legacy/ExecutiveDashboard
+            - generic [ref=e94]: 
+            - text: Executive Dashboard
+          - tab " Task Management " [ref=e96]:
+            - heading " Task Management " [level=4] [ref=e97]:
+              - button " Task Management " [ref=e98] [cursor=pointer]:
+                - link " Task Management " [ref=e100]:
+                  - /url: "#"
+                  - generic [ref=e101]: 
+                  - text: Task Management
+                  - generic [ref=e102]: 
+          - tab " Request/Authorizations " [ref=e104]:
+            - heading " Request/Authorizations " [level=4] [ref=e105]:
+              - button " Request/Authorizations " [ref=e106] [cursor=pointer]:
+                - link " Request/Authorizations " [ref=e108]:
+                  - /url: "#"
+                  - generic [ref=e109]: 
+                  - text: Request/Authorizations
+                  - generic [ref=e110]: 
+          - tab " Suspensions " [ref=e112]:
+            - heading " Suspensions " [level=4] [ref=e113]:
+              - button " Suspensions " [ref=e114] [cursor=pointer]:
+                - link " Suspensions " [ref=e116]:
+                  - /url: "#"
+                  - generic [ref=e117]: 
+                  - text: Suspensions
+                  - generic [ref=e118]: 
+          - tab " Evaluation Authoring " [ref=e120]:
+            - heading " Evaluation Authoring " [level=4] [ref=e121]:
+              - button " Evaluation Authoring " [ref=e122] [cursor=pointer]:
+                - link " Evaluation Authoring " [ref=e124]:
+                  - /url: "#"
+                  - generic [ref=e125]: 
+                  - text: Evaluation Authoring
+                  - generic [ref=e126]: 
+          - tab " Print/Submit Evaluations " [ref=e128]:
+            - heading " Print/Submit Evaluations " [level=4] [ref=e129]:
+              - button " Print/Submit Evaluations " [ref=e130] [cursor=pointer]:
+                - link " Print/Submit Evaluations " [ref=e132]:
+                  - /url: "#"
+                  - generic [ref=e133]: 
+                  - text: Print/Submit Evaluations
+                  - generic [ref=e134]: 
+          - tab " Forms Builder " [ref=e136]:
+            - heading " Forms Builder " [level=4] [ref=e137]:
+              - button " Forms Builder " [ref=e138] [cursor=pointer]:
+                - link " Forms Builder " [ref=e140]:
+                  - /url: "#"
+                  - generic [ref=e141]: 
+                  - text: Forms Builder
+                  - generic [ref=e142]: 
+          - tab " Reports " [ref=e144]:
+            - heading " Reports " [level=4] [ref=e145]:
+              - button " Reports " [ref=e146] [cursor=pointer]:
+                - link " Reports " [ref=e148]:
+                  - /url: "#"
+                  - generic [ref=e149]: 
+                  - text: Reports
+                  - generic [ref=e150]: 
+          - tab " Compliance Reports " [ref=e152]:
+            - heading " Compliance Reports " [level=4] [ref=e153]:
+              - button " Compliance Reports " [ref=e154] [cursor=pointer]:
+                - link " Compliance Reports " [ref=e156]:
+                  - /url: "#"
+                  - generic [ref=e157]: 
+                  - text: Compliance Reports
+                  - generic [ref=e158]: 
+          - tab " Other Admin Reports " [ref=e160]:
+            - heading " Other Admin Reports " [level=4] [ref=e161]:
+              - button " Other Admin Reports " [ref=e162] [cursor=pointer]:
+                - link " Other Admin Reports " [ref=e164]:
+                  - /url: "#"
+                  - generic [ref=e165]: 
+                  - text: Other Admin Reports
+                  - generic [ref=e166]: 
+          - tab " Compliance Management " [ref=e168]:
+            - heading " Compliance Management " [level=4] [ref=e169]:
+              - button " Compliance Management " [ref=e170] [cursor=pointer]:
+                - link " Compliance Management " [ref=e172]:
+                  - /url: "#"
+                  - generic [ref=e173]: 
+                  - text: Compliance Management
+                  - generic [ref=e174]: 
+      - generic [ref=e175]:
+        - img "Footer" [ref=e176]
+        - text: © 2026 ENERGY worldnet, Inc.
+        - generic [ref=e177]: All rights reserved.
+    - generic [ref=e178]:
+      - generic [ref=e179]: Check here for system updates and more.
+      - text:     
+      - generic [ref=e181]:
+        - heading "Here are a few helpful tips:" [level=3] [ref=e182]
+        - list [ref=e183]:
+          - listitem [ref=e184]:
+            - text: The power to set your own homepage is now in your hands. It's easy! In the left menu simply click the star icon
+            - generic [ref=e185]: 
+            - text: to "favorite" the page! Next time you log in to Energy Worldnet, your homepage will be the page that you "favorited." Until you set a new homepage, this help page will be your default.
+          - listitem [ref=e186]: Never miss an update again! We will notify you of system updates through the Information Bar which will appear at the top of every page when an update is scheduled.
+          - listitem [ref=e187]:
+            - text: Click
+            - strong [ref=e189]: Notifications
+            - generic [ref=e190]: 
+            - text: to see any alerts that need your attention.
+          - listitem [ref=e191]:
+            - generic [ref=e192]:
+              - text: Need help with an issue? Want to give us some feedback? We are here to help! Click
+              - strong [ref=e193]: Support
+            - generic [ref=e194]: 
+            - text: in the top-right corner and let us know what you think.
+          - listitem [ref=e195]:
+            - text: Need more space for your reports? To maximize your screen space, hit the menu button
+            - generic [ref=e196]: 
+            - text: in the top-left corner and the menu will slide away.
+          - listitem [ref=e197]:
+            - text: Scroll down far enough on a page and you will see an arrow icon
+            - generic [ref=e198]: 
+            - text: appear in the bottom-right corner. Click the arrow icon if you need to go back to the top of the page!
+          - listitem [ref=e199]: We will continue to make new additions to the system over the course of this year. Fear not! We will roll out each new feature and enhancement to build upon the last release. These changes will create a new system experience that is enjoyable and user-friendly.
+  - generic: 
+```

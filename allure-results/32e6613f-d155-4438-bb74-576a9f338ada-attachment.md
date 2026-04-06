@@ -1,0 +1,418 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - text: 
+  - generic [ref=e3]:
+    - link "" [ref=e5] [cursor=pointer]:
+      - /url: "#"
+      - generic [ref=e6]: 
+    - link "Logo" [ref=e7] [cursor=pointer]:
+      - /url: /legacy
+      - img "Logo" [ref=e8]
+    - list [ref=e10]:
+      - listitem [ref=e11]:
+        - link "Employee Image Andry Flitt ADNIM Julia_Transfer - USA (Automation)" [ref=e12] [cursor=pointer]:
+          - /url: /legacy/MyProfile
+          - img "Employee Image" [ref=e13]
+          - generic [ref=e14]:
+            - generic [ref=e15]: Andry Flitt ADNIM
+            - generic [ref=e16]: Julia_Transfer - USA (Automation)
+      - listitem [ref=e17]:
+        - button "" [ref=e18] [cursor=pointer]:
+          - generic [ref=e19]: 
+        - text: 
+      - listitem [ref=e20]:
+        - button "" [ref=e21] [cursor=pointer]:
+          - generic [ref=e22]: 
+        - text:   
+      - listitem [ref=e23]:
+        - link "" [ref=e24] [cursor=pointer]:
+          - /url: javascript:logoffCheck('/legacy/ApiProxy/Logout?isSecureBrowser=' + (typeof SafeExamBrowser !== 'undefined'));
+          - generic [ref=e25]: 
+  - generic [ref=e27]:
+    - tablist [ref=e31]:
+      - generic [ref=e32]:
+        - generic [ref=e33]:
+          - heading "My Toolbox" [level=1] [ref=e34]
+          - link " My Requirements" [ref=e39] [cursor=pointer]:
+            - /url: /legacy/MyRequirements
+            - generic [ref=e40]: 
+            - text: My Requirements
+          - link " My Forms" [ref=e45] [cursor=pointer]:
+            - /url: /legacy/NewSite?url=static/my-forms
+            - generic [ref=e46]: 
+            - text: My Forms
+          - link " My Profile" [ref=e51] [cursor=pointer]:
+            - /url: /legacy/MyProfile
+            - generic [ref=e52]: 
+            - text: My Profile
+          - link " Notification Center" [ref=e57] [cursor=pointer]:
+            - /url: /legacy/NotificationCenter
+            - generic [ref=e58]: 
+            - text: Notification Center
+          - tab " My Reports " [ref=e60]:
+            - heading " My Reports " [level=4] [ref=e61]:
+              - button " My Reports " [ref=e62] [cursor=pointer]:
+                - link " My Reports " [ref=e64]:
+                  - /url: "#"
+                  - generic [ref=e65]: 
+                  - text: My Reports
+                  - generic [ref=e66]: 
+          - link " Expiring Dashboard" [ref=e71] [cursor=pointer]:
+            - /url: /legacy/ExpiringSummary
+            - generic [ref=e72]: 
+            - text: Expiring Dashboard
+          - link " Evaluator Tool" [ref=e77] [cursor=pointer]:
+            - /url: /legacy/EvaluatorToolSearch
+            - generic [ref=e78]: 
+            - text: Evaluator Tool
+        - generic [ref=e79]:
+          - heading "Administrator" [level=1] [ref=e80]
+          - tab " Account Management " [ref=e82]:
+            - heading " Account Management " [level=4] [ref=e83]:
+              - button " Account Management " [ref=e84] [cursor=pointer]:
+                - link " Account Management " [ref=e86]:
+                  - /url: "#"
+                  - generic [ref=e87]: 
+                  - text: Account Management
+                  - generic [ref=e88]: 
+          - link " Executive Dashboard" [ref=e93] [cursor=pointer]:
+            - /url: /legacy/ExecutiveDashboard
+            - generic [ref=e94]: 
+            - text: Executive Dashboard
+          - tab " Task Management " [ref=e96]:
+            - heading " Task Management " [level=4] [ref=e97]:
+              - button " Task Management " [ref=e98] [cursor=pointer]:
+                - link " Task Management " [ref=e100]:
+                  - /url: "#"
+                  - generic [ref=e101]: 
+                  - text: Task Management
+                  - generic [ref=e102]: 
+          - tab " Request/Authorizations " [ref=e104]:
+            - heading " Request/Authorizations " [level=4] [ref=e105]:
+              - button " Request/Authorizations " [ref=e106] [cursor=pointer]:
+                - link " Request/Authorizations " [ref=e108]:
+                  - /url: "#"
+                  - generic [ref=e109]: 
+                  - text: Request/Authorizations
+                  - generic [ref=e110]: 
+          - tab " Suspensions " [ref=e112]:
+            - heading " Suspensions " [level=4] [ref=e113]:
+              - button " Suspensions " [ref=e114] [cursor=pointer]:
+                - link " Suspensions " [ref=e116]:
+                  - /url: "#"
+                  - generic [ref=e117]: 
+                  - text: Suspensions
+                  - generic [ref=e118]: 
+          - tab " Evaluation Authoring " [ref=e120]:
+            - heading " Evaluation Authoring " [level=4] [ref=e121]:
+              - button " Evaluation Authoring " [ref=e122] [cursor=pointer]:
+                - link " Evaluation Authoring " [ref=e124]:
+                  - /url: "#"
+                  - generic [ref=e125]: 
+                  - text: Evaluation Authoring
+                  - generic [ref=e126]: 
+          - tab " Print/Submit Evaluations " [ref=e128]:
+            - heading " Print/Submit Evaluations " [level=4] [ref=e129]:
+              - button " Print/Submit Evaluations " [ref=e130] [cursor=pointer]:
+                - link " Print/Submit Evaluations " [ref=e132]:
+                  - /url: "#"
+                  - generic [ref=e133]: 
+                  - text: Print/Submit Evaluations
+                  - generic [ref=e134]: 
+          - tab " Forms Builder " [ref=e136]:
+            - heading " Forms Builder " [level=4] [ref=e137]:
+              - button " Forms Builder " [ref=e138] [cursor=pointer]:
+                - link " Forms Builder " [ref=e140]:
+                  - /url: "#"
+                  - generic [ref=e141]: 
+                  - text: Forms Builder
+                  - generic [ref=e142]: 
+          - tab " Reports " [ref=e144]:
+            - heading " Reports " [level=4] [ref=e145]:
+              - button " Reports " [ref=e146] [cursor=pointer]:
+                - link " Reports " [ref=e148]:
+                  - /url: "#"
+                  - generic [ref=e149]: 
+                  - text: Reports
+                  - generic [ref=e150]: 
+          - tab " Compliance Reports " [ref=e152]:
+            - heading " Compliance Reports " [level=4] [ref=e153]:
+              - button " Compliance Reports " [ref=e154] [cursor=pointer]:
+                - link " Compliance Reports " [ref=e156]:
+                  - /url: "#"
+                  - generic [ref=e157]: 
+                  - text: Compliance Reports
+                  - generic [ref=e158]: 
+          - tab " Other Admin Reports " [ref=e160]:
+            - heading " Other Admin Reports " [level=4] [ref=e161]:
+              - button " Other Admin Reports " [ref=e162] [cursor=pointer]:
+                - link " Other Admin Reports " [ref=e164]:
+                  - /url: "#"
+                  - generic [ref=e165]: 
+                  - text: Other Admin Reports
+                  - generic [ref=e166]: 
+          - tab " Compliance Management " [ref=e168]:
+            - heading " Compliance Management " [level=4] [ref=e169]:
+              - button " Compliance Management " [ref=e170] [cursor=pointer]:
+                - link " Compliance Management " [ref=e172]:
+                  - /url: "#"
+                  - generic [ref=e173]: 
+                  - text: Compliance Management
+                  - generic [ref=e174]: 
+      - generic [ref=e175]:
+        - img "Footer" [ref=e176]
+        - text: © 2026 ENERGY worldnet, Inc.
+        - generic [ref=e177]: All rights reserved.
+    - generic [ref=e179]:
+      - heading "My Requirements" [level=1] [ref=e181]
+      - generic [ref=e182]:
+        - list [ref=e183]:
+          - listitem [ref=e184]:
+            - link " View Requirements" [ref=e185]:
+              - /url: ""
+              - generic [ref=e186]:
+                - generic [ref=e187]: 
+                - text: View Requirements
+          - text: 
+        - generic [ref=e190]:
+          - alert [ref=e193]:
+            - generic [ref=e196]:
+              - img [ref=e198]
+              - generic [ref=e200]: "View and launch your evaluation requirements. Note: A valid subscription is required to launch EWN training and evaluations."
+          - generic [ref=e201]:
+            - generic [ref=e202]:
+              - generic [ref=e204]:
+                - generic [ref=e205]: "Requirements For:"
+                - combobox "Requirements For:" [ref=e207]:
+                  - option "ALL - Julia_Transfer - USA (Automation)" [selected]
+                  - option "Directly Assigned Evaluations"
+                  - 'option "Due Date: Add and Remove"'
+                  - option "Task List - My Req"
+                  - 'option "TL #1 ( CBT only)"'
+                  - option "TL - CBT English+Spanish ( MyReq )"
+                  - option "TL - Suspension"
+                  - option "TL for assertion Training page( My Req)"
+                  - option "TL- CBT Spanish ( for MyReq)"
+                  - option "TL-TaskStatus"
+              - generic [ref=e209]:
+                - generic [ref=e210]: "Requirements View:"
+                - combobox "Requirements View:" [ref=e212]:
+                  - option "Evaluation View" [selected]
+                  - option "Task View"
+            - generic [ref=e215]:
+              - generic [ref=e216]: "Evaluation Author:"
+              - combobox "Evaluation Author:" [ref=e218]:
+                - option "All" [selected]
+                - option "Julia_Transfer - USA (Automation)"
+                - option "Energy Worldnet"
+            - generic [ref=e219]:
+              - generic [ref=e221]:
+                - generic [ref=e222]: "Evaluation Status:"
+                - generic [ref=e225]:
+                  - button "Completed" [ref=e226] [cursor=pointer]:
+                    - generic [ref=e227]: Completed
+                  - text:   
+              - generic [ref=e230]:
+                - generic [ref=e231]: "Subscription Status:"
+                - combobox "Subscription Status:" [ref=e233]:
+                  - option "All" [selected]
+                  - option "Active"
+                  - option "Inactive"
+            - generic [ref=e234]:
+              - generic [ref=e236]:
+                - generic [ref=e237]: "Evaluation Type:"
+                - combobox [ref=e239]:
+                  - option "All" [selected]
+                  - option "Computer Based Training"
+                  - option "Instructor-Led Training"
+                  - option "Performance Evaluation"
+                  - option "Written Evaluation"
+                  - option "Record Only"
+              - generic [ref=e241]:
+                - generic [ref=e242]: "Forecast:"
+                - generic [ref=e246]:
+                  - textbox "Forecast:" [ref=e247]:
+                    - /placeholder: mm/dd/yyyy
+                    - text: 04/02/2026
+                  - button "" [ref=e249] [cursor=pointer]:
+                    - generic [ref=e250]: 
+            - generic [ref=e253]:
+              - generic [ref=e254]: "Evaluation Title / ID:"
+              - textbox [ref=e256]
+          - button " Search" [active] [ref=e258] [cursor=pointer]:
+            - generic [ref=e259]: 
+            - text: Search
+          - generic [ref=e260]:
+            - generic [ref=e261]:
+              - heading "Results" [level=2] [ref=e262]
+              - button " Export to " [ref=e265] [cursor=pointer]:
+                - generic [ref=e266]: 
+                - text: Export to
+                - generic [ref=e267]: 
+              - generic [ref=e268]:
+                - generic [ref=e269] [cursor=pointer]: 
+                - generic [ref=e270] [cursor=pointer]: 
+                - generic [ref=e271] [cursor=pointer]: 
+                - generic [ref=e272] [cursor=pointer]: 
+                - generic [ref=e273] [cursor=pointer]: 
+                - generic [ref=e274] [cursor=pointer]: 
+                - generic [ref=e275] [cursor=pointer]: 
+                - generic [ref=e276] [cursor=pointer]: 
+            - table [ref=e278]:
+              - rowgroup [ref=e279]:
+                - row "EWN ID Employee ID Type ID Title Completed Valid Until Training Training Required Status Launch" [ref=e280]:
+                  - columnheader "EWN ID" [ref=e281] [cursor=pointer]:
+                    - generic [ref=e282]: EWN ID
+                  - columnheader "Employee ID" [ref=e283] [cursor=pointer]:
+                    - generic [ref=e284]: Employee ID
+                  - columnheader "Type" [ref=e285] [cursor=pointer]:
+                    - generic [ref=e286]: Type
+                  - columnheader "ID" [ref=e287] [cursor=pointer]:
+                    - generic [ref=e288]: ID
+                  - columnheader "Title" [ref=e289] [cursor=pointer]:
+                    - generic [ref=e290]: Title
+                  - columnheader "Completed" [ref=e291] [cursor=pointer]:
+                    - generic [ref=e292]: Completed
+                  - columnheader "Valid Until" [ref=e293] [cursor=pointer]:
+                    - generic [ref=e294]: Valid Until
+                  - columnheader "Training" [ref=e295] [cursor=pointer]:
+                    - generic [ref=e296]: Training
+                  - columnheader "Training Required" [ref=e297]:
+                    - generic [ref=e298]: Training Required
+                  - columnheader "Status" [ref=e299] [cursor=pointer]:
+                    - generic [ref=e300]: Status
+                  - columnheader "Launch" [ref=e301]:
+                    - generic [ref=e302]: Launch
+              - rowgroup [ref=e303]:
+                - row "EWN-367228 Computer Based Training 2197 EWN-CBT-AOC Overpressure (MAOP Exceeded) Not Complete Not Complete Not Complete  " [ref=e304]:
+                  - cell "EWN-367228" [ref=e305]
+                  - cell [ref=e306]
+                  - cell "Computer Based Training" [ref=e307]
+                  - cell "2197" [ref=e308]
+                  - cell "EWN-CBT-AOC Overpressure (MAOP Exceeded)" [ref=e309]
+                  - cell "Not Complete" [ref=e310]
+                  - cell "Not Complete" [ref=e311]
+                  - cell "Not Complete" [ref=e312]
+                  - cell [ref=e313]
+                  - cell "" [ref=e314]:
+                    - generic [ref=e315]: 
+                  - cell "" [ref=e316]:
+                    - generic [ref=e319] [cursor=pointer]: 
+                - row "EWN-367228 Computer Based Training 2198 EWN-CBT-Abandonment of Facilities Not Complete Not Complete Not Complete  " [ref=e320]:
+                  - cell "EWN-367228" [ref=e321]
+                  - cell [ref=e322]
+                  - cell "Computer Based Training" [ref=e323]
+                  - cell "2198" [ref=e324]
+                  - cell "EWN-CBT-Abandonment of Facilities" [ref=e325]
+                  - cell "Not Complete" [ref=e326]
+                  - cell "Not Complete" [ref=e327]
+                  - cell "Not Complete" [ref=e328]
+                  - cell [ref=e329]
+                  - cell "" [ref=e330]:
+                    - generic [ref=e331]: 
+                  - cell "" [ref=e332]:
+                    - generic [ref=e335] [cursor=pointer]: 
+                - row "EWN-367228 Computer Based Training 2212 EWN-CBT-AOC Insufficient Cathodic Protection Not Complete Not Complete 08/30/2024  " [ref=e336]:
+                  - cell "EWN-367228" [ref=e337]
+                  - cell [ref=e338]
+                  - cell "Computer Based Training" [ref=e339]
+                  - cell "2212" [ref=e340]
+                  - cell "EWN-CBT-AOC Insufficient Cathodic Protection" [ref=e341]
+                  - cell "Not Complete" [ref=e342]
+                  - cell "Not Complete" [ref=e343]
+                  - cell "08/30/2024" [ref=e344]
+                  - cell [ref=e345]
+                  - cell "" [ref=e346]:
+                    - generic [ref=e347]: 
+                  - cell "" [ref=e348]:
+                    - generic [ref=e351] [cursor=pointer]: 
+                - row "EWN-367228 Computer Based Training 2215 EWN-CBT-AOC No Gas or No Liquid / No Flow Not Complete Not Complete Not Complete  " [ref=e352]:
+                  - cell "EWN-367228" [ref=e353]
+                  - cell [ref=e354]
+                  - cell "Computer Based Training" [ref=e355]
+                  - cell "2215" [ref=e356]
+                  - cell "EWN-CBT-AOC No Gas or No Liquid / No Flow" [ref=e357]
+                  - cell "Not Complete" [ref=e358]
+                  - cell "Not Complete" [ref=e359]
+                  - cell "Not Complete" [ref=e360]
+                  - cell [ref=e361]
+                  - cell "" [ref=e362]:
+                    - generic [ref=e363]: 
+                  - cell "" [ref=e364]:
+                    - generic [ref=e367] [cursor=pointer]: 
+                - row "EWN-367228 Performance Evaluation 2232 EWN-PE-Cast Iron Maintenance (0831, 0841) Not Complete Not Complete  " [ref=e368]:
+                  - cell "EWN-367228" [ref=e369]
+                  - cell [ref=e370]
+                  - cell "Performance Evaluation" [ref=e371]
+                  - cell "2232" [ref=e372]
+                  - cell "EWN-PE-Cast Iron Maintenance (0831, 0841)" [ref=e373]
+                  - cell "Not Complete" [ref=e374]
+                  - cell "Not Complete" [ref=e375]
+                  - cell [ref=e376]
+                  - cell [ref=e377]
+                  - cell "" [ref=e378]:
+                    - generic [ref=e379]: 
+                  - cell "" [ref=e380]:
+                    - generic [ref=e382] [cursor=pointer]: 
+                - row "EWN-367228 Computer Based Training 120351 CBT for complete assessment-English Not Complete Not Complete 01/16/2024  " [ref=e383]:
+                  - cell "EWN-367228" [ref=e384]
+                  - cell [ref=e385]
+                  - cell "Computer Based Training" [ref=e386]
+                  - cell "120351" [ref=e387]
+                  - cell "CBT for complete assessment-English" [ref=e388]
+                  - cell "Not Complete" [ref=e389]
+                  - cell "Not Complete" [ref=e390]
+                  - cell "01/16/2024" [ref=e391]
+                  - cell [ref=e392]
+                  - cell "" [ref=e393]:
+                    - generic [ref=e394]: 
+                  - cell "" [ref=e395]:
+                    - generic [ref=e398] [cursor=pointer]: 
+                - row "EWN-367228 Computer Based Training 120383 CBT - Spanish ( assessment+training) Not Complete Not Complete Not Complete  " [ref=e399]:
+                  - cell "EWN-367228" [ref=e400]
+                  - cell [ref=e401]
+                  - cell "Computer Based Training" [ref=e402]
+                  - cell "120383" [ref=e403]
+                  - cell "CBT - Spanish ( assessment+training)" [ref=e404]
+                  - cell "Not Complete" [ref=e405]
+                  - cell "Not Complete" [ref=e406]
+                  - cell "Not Complete" [ref=e407]
+                  - cell [ref=e408]
+                  - cell "" [ref=e409]:
+                    - generic [ref=e410]: 
+                  - cell "" [ref=e411]:
+                    - generic [ref=e414] [cursor=pointer]: 
+                - row "EWN-367228 Computer Based Training 120384 CBT English+Spanish ( assessment+training) Not Complete Not Complete Not Complete  " [ref=e415]:
+                  - cell "EWN-367228" [ref=e416]
+                  - cell [ref=e417]
+                  - cell "Computer Based Training" [ref=e418]
+                  - cell "120384" [ref=e419]
+                  - cell "CBT English+Spanish ( assessment+training)" [ref=e420]
+                  - cell "Not Complete" [ref=e421]
+                  - cell "Not Complete" [ref=e422]
+                  - cell "Not Complete" [ref=e423]
+                  - cell [ref=e424]
+                  - cell "" [ref=e425]:
+                    - generic [ref=e426]: 
+                  - cell "" [ref=e427]:
+                    - generic [ref=e430] [cursor=pointer]: 
+                - row "EWN-367228 Computer Based Training 120453 CBT English + Spanish ( custome) Not Complete Not Complete 02/28/2024  " [ref=e431]:
+                  - cell "EWN-367228" [ref=e432]
+                  - cell [ref=e433]
+                  - cell "Computer Based Training" [ref=e434]
+                  - cell "120453" [ref=e435]
+                  - cell "CBT English + Spanish ( custome)" [ref=e436]
+                  - cell "Not Complete" [ref=e437]
+                  - cell "Not Complete" [ref=e438]
+                  - cell "02/28/2024" [ref=e439]
+                  - cell [ref=e440]
+                  - cell "" [ref=e441]:
+                    - generic [ref=e442]: 
+                  - cell "" [ref=e443]:
+                    - generic [ref=e446] [cursor=pointer]: 
+            - text:  
+          - generic [ref=e464]: Please Wait...
+  - generic: 
+```
