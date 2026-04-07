@@ -197,7 +197,10 @@ export class IsnManualExportPage {
         await firstItem.waitFor({ state: 'visible' });
         // Click the checkbox inside the item to select it
         await firstItem.locator('input[type="checkbox"]').click();
-        // Move-right is a div.btn — just wait for it to be visible and click
+        await this.clickMoveRight();
+    }
+
+    async clickMoveRight() {
         await this.moveRightButton.waitFor({ state: 'visible', timeout: 5000 });
         await this.moveRightButton.click();
         await this.selectedItems.first().waitFor({ state: 'visible', timeout: 10000 });
@@ -236,5 +239,102 @@ export class IsnManualExportPage {
 
     async expectSelectedItemsCount(n: number) {
         await expect(this.selectedItems).toHaveCount(n);
+    }
+
+    // ── TC07 actions ─────────────────────────────────────────────────────────
+
+    async checkFirstAvailableItem() {
+        const firstItem = this.availableItems.first();
+        await firstItem.waitFor({ state: 'visible' });
+        await firstItem.locator('input[type="checkbox"]').click();
+    }
+
+    async checkFirstSelectedItem() {
+        const firstItem = this.selectedItems.first();
+        await firstItem.waitFor({ state: 'visible' });
+        await firstItem.locator('input[type="checkbox"]').click();
+    }
+
+    async clickMoveLeft() {
+        const moveLeftButton = this.page.locator('ewn-dual-list .move-button-group .ri-arrow-left-s-line');
+        await moveLeftButton.waitFor({ state: 'visible' });
+        await moveLeftButton.click();
+    }
+
+    async getFirstAvailableItemLabel(): Promise<string> {
+        const text = await this.availableItems.first().locator('span.ng-binding').textContent();
+        return text?.trim() ?? '';
+    }
+
+    async getFirstSelectedItemLabel(): Promise<string> {
+        const text = await this.selectedItems.first().locator('span.ng-binding').textContent();
+        return text?.trim() ?? '';
+    }
+
+    async getAvailableItemLabels(): Promise<string[]> {
+        const texts = await this.availableItems.locator('span.ng-binding').allTextContents();
+        return texts.map(t => t.trim());
+    }
+
+    async getSelectedItemLabels(): Promise<string[]> {
+        const texts = await this.selectedItems.locator('span.ng-binding').allTextContents();
+        return texts.map(t => t.trim());
+    }
+
+    // ── TC07 assertions ──────────────────────────────────────────────────────
+
+    async expectFirstAvailableItemChecked() {
+        const checkbox = this.availableItems.first().locator('input[type="checkbox"]');
+        await expect(checkbox).toBeChecked();
+    }
+
+    async expectFirstSelectedItemChecked() {
+        const checkbox = this.selectedItems.first().locator('input[type="checkbox"]');
+        await expect(checkbox).toBeChecked();
+    }
+
+    async expectNoDuplicatesAcrossPanels() {
+        const availableLabels = await this.getAvailableItemLabels();
+        const selectedLabels  = await this.getSelectedItemLabels();
+        const inBoth = availableLabels.filter(l => selectedLabels.includes(l));
+        expect(inBoth).toHaveLength(0);
+    }
+
+    // ── TC11 actions ─────────────────────────────────────────────────────────
+
+    async moveNAvailableUsersToSelected(n: number): Promise<string[]> {
+        const movedLabels: string[] = [];
+        for (let i = 0; i < n; i++) {
+            const firstItem = this.availableItems.first();
+            await firstItem.waitFor({ state: 'visible' });
+            const label = await firstItem.locator('span.ng-binding').textContent();
+            movedLabels.push(label?.trim() ?? '');
+            await firstItem.locator('input[type="checkbox"]').click();
+            await this.clickMoveRight();
+        }
+        return movedLabels;
+    }
+
+    async clickExportButton() {
+        await this.exportButton.waitFor({ state: 'visible' });
+        await this.exportButton.click();
+    }
+
+    // ── TC11 assertions ──────────────────────────────────────────────────────
+
+    async expectExportButtonEnabled() {
+        await expect(this.exportButton).toBeEnabled();
+    }
+
+    async expectSuccessToastVisible() {
+        const toast = this.page.locator('.toast.text-bg-success');
+        await expect(toast).toBeVisible({ timeout: 10000 });
+    }
+
+    async expectSelectedPanelHasLabels(labels: string[]) {
+        const actual = await this.getSelectedItemLabels();
+        for (const label of labels) {
+            expect(actual).toContain(label);
+        }
     }
 }
