@@ -1,85 +1,71 @@
-import {test, expect, Locator} from '@playwright/test';
+import { test, expect, type Page, type BrowserContext } from '@playwright/test';
 import fs from 'fs';
-import path from 'path/win32';
-//import { ConditionUsageReportPage } from '../pages/ConditionUsageReportPage';
-// EWN Login Test
- test('Successful run and download of Condition Usage Report', async ({ page }) => {
-    await page.goto("https://test-auth.ewn.com/static/login");
-    await page.getByLabel('Username').fill('ytkachenko');
-    await page.getByLabel('Password').fill('!TestEnv!1');
-    await page.getByRole('button', { name: 'Log In' }).click();
+import path from 'path';
+import { LoginPage } from '../../../pages/LoginPage';
+import { TestConfig } from '../../../test.config';
+import { ConditionUsageReportPage } from '../../../pages/utilities/ConditionUsageReportPage';
 
-    //await page.waitForURL("https://test-app.ewn.com/legacy/Help");
-    //await expect(page).toHaveURL('https://test-app.ewn.com/legacy/Help');
-    await page.waitForTimeout(5000);
+test.describe.configure({ mode: 'serial' });
 
-    const Utils:Locator=page.getByRole('link', { name: 'Utilities' });
-    await expect(Utils).toBeVisible();
-    await Utils.click();
-    await page.waitForTimeout(3000);
+test.describe('Condition Usage Report', () => {
+    const COMPANY = 'Allison - EWN Platform Testing';
 
-    const ConditionUsageReport:Locator=page.getByRole('link', { name: 'Condition Usage' });
-    await ConditionUsageReport.click();
-    await page.waitForTimeout(3000);
-    
-    //Verify header of the report
-    const HeaderConditionUsageReport:Locator=page.getByRole('heading', { name: 'Condition Usage Report' });
-    await expect(HeaderConditionUsageReport).toBeVisible();
+    let context: BrowserContext;
+    let page: Page;
 
-      //Select filters for the report
-    
-      await page.locator('#uxDdlCompanies').selectOption({ label: 'Allison Company' });
-      await page.waitForTimeout(3000);
+    test.beforeAll(async ({ browser }) => {
+        const config = new TestConfig();
+        context = await browser.newContext();
+        page = await context.newPage();
 
-      const includeInactive:Locator=page.getByRole('checkbox', { name: 'Include Inactive Users:' })
-      await expect(includeInactive).toBeEnabled();
-      await includeInactive.check(); 
-      await page.waitForTimeout(3000);
+        const loginPage = new LoginPage(page);
+        await loginPage.login(config.validUsername1, config.validPassword1);
+        await page.waitForURL('**/legacy/**', { timeout: 30000 });
+        await page.waitForLoadState('domcontentloaded');
+    });
 
-      const RunReport:Locator=page.getByRole('button', { name: 'Run Report' })
-      await expect(RunReport).toBeVisible();
+    test.afterAll(async () => {
+        await context.close();
+    });
 
-      // ✅ Set up download listener BEFORE clicking Run Report
-     const downloadPromise = page.waitForEvent('download');
-     await RunReport.click();
+    test.beforeEach(async () => {
+        const reportPage = new ConditionUsageReportPage(page);
+        await reportPage.navigateTo();
+    });
 
-      /*
-      await RunReport.click();
-      await page.waitForTimeout(3000);
-      */
+    test('Successful run and download of Condition Usage Report', async () => {
+        test.setTimeout(120000);
+        const reportPage = new ConditionUsageReportPage(page);
 
-       // Check immediately with a short timeout — if it's a flash, catch it fast
-         await expect(page.getByText('Generating Report'))
-        .toBeVisible({ timeout: 5000 })
-        .catch(() => console.warn('Loading modal was too fast to catch — skipping'));
+        // Verify page header
+        await reportPage.expectHeaderVisible();
 
-        // ✅ Wait for the loading modal to disappear (report is done generating)
-        await expect(page.getByText('Generating Report'))
-        .toBeHidden({ timeout: 90000 })
-        .catch(() => console.warn('Loading modal was already gone'));
+        // Select filters
+        await reportPage.selectCompany(COMPANY);
+        await reportPage.checkIncludeInactive();
+        await reportPage.expectRunReportButtonVisible();
 
-        // ✅ Capture the download
+        // Set up download listener BEFORE clicking Run Report
+        const downloadPromise = page.waitForEvent('download');
+        await reportPage.clickRunReport();
+
+        // Wait for report generation to complete
+        await reportPage.waitForReportToGenerate();
+
+        // Capture the download
         const download = await downloadPromise;
 
-    // ✅ Verify the filename matches expected pattern
-    const fileName = download.suggestedFilename();
-    console.log(`Downloaded file: ${fileName}`);
-    expect(fileName).toMatch(/ConditionUsageReport_.*\.xlsx/);
+        // Verify filename matches expected pattern
+        const fileName = download.suggestedFilename();
+        expect(fileName).toMatch(/ConditionUsageReport_.*\.xlsx/);
 
-    // ✅ Save the file and verify it exists on disk
-    const downloadPath:any= path.join('./downloads', fileName);
-    await download.saveAs(downloadPath);
+        // Save file and verify it exists on disk
+        const downloadPath = path.join('downloads', fileName);
+        await download.saveAs(downloadPath);
+        expect(fs.existsSync(downloadPath)).toBeTruthy();
 
-    expect(fs.existsSync(downloadPath)).toBeTruthy();
-
-    // ✅ Verify file size is greater than 0 (not an empty file)
-    const fileSize:number= fs.statSync(downloadPath).size;
-    console.log(`File size: ${fileSize} bytes`);
-    expect(fileSize).toBeGreaterThan(0);
-
-    console.log(`✅ Download verified: ${fileName} (${fileSize} bytes)`);
-
-  });
-
- 
-
+        // Verify file is not empty
+        const fileSize = fs.statSync(downloadPath).size;
+        expect(fileSize).toBeGreaterThan(0);
+    });
+});
