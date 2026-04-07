@@ -12,9 +12,9 @@ Step 4 | Check layout order | Company dropdown is visible and appears below the 
 */
 
 import { test, expect, type Page, type BrowserContext } from '@playwright/test';
-import { LoginPage } from '../../pages/LoginPage';
-import { TestConfig } from '../../test.config';
-import { EnterpriseAssociationsPage } from '../../pages/utilities/EnterpriseAssociations';
+import { LoginPage } from '../../../pages/LoginPage';
+import { TestConfig } from '../../../test.config';
+import { EnterpriseAssociationsPage } from '../../../pages/utilities/EnterpriseAssociations';
 
 test.describe.configure({ mode: 'serial' });
 

@@ -13,9 +13,9 @@ Step 5 | Check panel headers | Left panel reads "Available Companies"; right pan
 */
 
 import { test, type Page, type BrowserContext } from '@playwright/test';
-import { LoginPage } from '../../pages/LoginPage';
-import { TestConfig } from '../../test.config';
-import { EnterpriseAssociationsPage } from '../../pages/utilities/EnterpriseAssociations';
+import { LoginPage } from '../../../pages/LoginPage';
+import { TestConfig } from '../../../test.config';
+import { EnterpriseAssociationsPage } from '../../../pages/utilities/EnterpriseAssociations';
 
 test.describe.configure({ mode: 'serial' });
 

@@ -14,9 +14,9 @@ Step 6 | Reload the page and reselect the same company | Associated Companies pa
 */
 
 import { test, type Page, type BrowserContext } from '@playwright/test';
-import { LoginPage } from '../../pages/LoginPage';
-import { TestConfig } from '../../test.config';
-import { EnterpriseAssociationsPage } from '../../pages/utilities/EnterpriseAssociations';
+import { LoginPage } from '../../../pages/LoginPage';
+import { TestConfig } from '../../../test.config';
+import { EnterpriseAssociationsPage } from '../../../pages/utilities/EnterpriseAssociations';
 
 test.describe.configure({ mode: 'serial' });
 
