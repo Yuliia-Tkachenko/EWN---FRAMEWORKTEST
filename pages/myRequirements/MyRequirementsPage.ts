@@ -41,6 +41,11 @@ export class MyRequirementsPage {
     private readonly iconLegend: Locator;
     private readonly tableDataRows: Locator;
 
+    // locators — TC07
+    private readonly evalStatusSelectAll: Locator;
+    private readonly attentionModal: Locator;
+    private readonly attentionModalYesButton: Locator;
+
     constructor(page: Page) {
         this.page = page;
 
@@ -81,6 +86,11 @@ export class MyRequirementsPage {
         this.exportToButton = page.locator('button.dropdown-toggle', { hasText: /export to/i });
         this.iconLegend     = page.locator('.icon-legend');
         this.tableDataRows  = page.locator('table[ng-table] tr[ng-repeat]');
+
+        // TC07
+        this.evalStatusSelectAll     = page.locator('#mltEvaluationStatus [ng-click="checkAll()"]');
+        this.attentionModal          = page.locator('.modal').filter({ hasText: /attention/i });
+        this.attentionModalYesButton = page.locator('.modal').filter({ hasText: /attention/i }).getByText(/^yes$/i);
     }
 
     // ── Navigation ──────────────────────────────────────────────────────────
@@ -307,5 +317,79 @@ export class MyRequirementsPage {
             .locator('a i').first();
         await expect(completedOptionIcon).toHaveClass(/ri-check-line/);
         await expect(completedOptionIcon).not.toHaveClass(/empty/);
+    }
+
+    // ── TC07 — Assessment Upload Modal Bug ──────────────────────────────────
+
+    async navigateDirectly() {
+        // Hard navigation — bypasses any blocking modal left by a previous test
+        await this.page.goto('/legacy/MyRequirements');
+        await this.page.waitForLoadState('domcontentloaded');
+    }
+
+    async selectAllEvalStatuses() {
+        await this.evalStatusSelectAll.click();
+    }
+
+    async findAndClickLaunchIcon(evaluationId: string) {
+        const row = this.tableDataRows.filter({ hasText: evaluationId });
+        await expect(row).toBeVisible({ timeout: 15_000 });
+        await row.scrollIntoViewIfNeeded();
+        // Launch icon may be rendered as a, button, or span (Remix icon) element
+        const lastCell = row.locator('td').last();
+        await lastCell.locator('a, button, span').first().click({ timeout: 10_000 });
+    }
+
+    async clickLaunchExamButton() {
+        // Wait for a Launch Exam element to appear in the DOM (any type)
+        await this.page.waitForFunction(() => {
+            const all = Array.from(document.querySelectorAll('[ng-click], a, button'));
+            return all.some(el => (el.textContent ?? '').trim().toLowerCase() === 'launch exam');
+        }, { timeout: 15_000 });
+
+        // Use AngularJS's own triggerHandler('click') which runs $apply and fires ng-click.
+        // This is the most reliable way to trigger ng-click in a legacy AngularJS app.
+        const triggered = await this.page.evaluate(() => {
+            const ng = (window as any).angular;
+            if (!ng) return false;
+            const all = Array.from(document.querySelectorAll('[ng-click], a, button'));
+            const btn = all.find(el => (el.textContent ?? '').trim().toLowerCase() === 'launch exam');
+            if (!btn) return false;
+            ng.element(btn).triggerHandler('click');
+            return true;
+        });
+
+        if (!triggered) {
+            // Fallback: standard Playwright click with force
+            await this.page.locator('a, button').filter({ hasText: /launch exam/i })
+                .first().click({ force: true, timeout: 10_000 });
+        }
+    }
+
+    async expectAttentionModalVisible() {
+        await expect(this.attentionModal).toBeVisible({ timeout: 5_000 });
+    }
+
+    async isAttentionModalVisible(): Promise<boolean> {
+        try {
+            await expect(this.attentionModal).toBeVisible({ timeout: 3_000 });
+            return true;
+        } catch {
+            return false;
+        }
+    }
+
+    async clickYesInAttentionModal() {
+        await this.attentionModalYesButton.click();
+        await expect(this.attentionModal).toBeHidden({ timeout: 5_000 });
+    }
+
+    async waitForAssessmentNavigation() {
+        // After clicking the launch icon the app routes through the Launch detail page
+        // and then auto-navigates to the assessment. Allow up to 30 s for the redirect.
+        await this.page.waitForURL('**/Assessment**', { timeout: 30_000 });
+        await this.page.waitForLoadState('domcontentloaded');
+        // Give Firefox extra time to finish initialising the AngularJS app
+        await this.page.waitForLoadState('networkidle', { timeout: 15_000 }).catch(() => {});
     }
 }

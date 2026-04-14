@@ -21,10 +21,14 @@ workers: 1,
     permissions: ['geolocation'], // Set necessary permissions for geolocation-based tests
      },  
 
-    projects: [ 
-      {  
-      name: 'chromium',   
-      use: { ...devices['Desktop Chrome'] },    
-     }, 
-      ], 
+    projects: [
+      {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+     },
+     {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+     },
+      ],
       }); 
