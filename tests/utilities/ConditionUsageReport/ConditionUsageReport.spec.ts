@@ -67,5 +67,7 @@ test.describe('Condition Usage Report', () => {
         // Verify file is not empty
         const fileSize = fs.statSync(downloadPath).size;
         expect(fileSize).toBeGreaterThan(0);
+
+        await page.pause();
     });
 });

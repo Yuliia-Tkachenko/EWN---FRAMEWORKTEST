@@ -12,6 +12,8 @@ workers: 1,
     ['list']   
   ], 
   use: {
+    launchOptions: {
+      slowMo: 1000}, // Slow down actions by 100ms for better visibility
     baseURL: 'https://test-app.ewn.com',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure', 
