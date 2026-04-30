@@ -8,3 +8,7 @@ node_modules/
 /playwright/.auth/
 /allure-results/
 /downloads/
+
+# Claude / MCP runtime files
+.playwright-mcp/
+.claude/settings.local.json
