@@ -1,221 +1,136 @@
 import { Page, expect, Locator } from '@playwright/test';
 
 export class IsnManualExportPage {
-    readonly page: Page;
+    private readonly page: Page;
 
-    // locators — TC03
+    // ── Company selection (Vue company-input component) ──────────────────────
     private readonly companySearchInput: Locator;
-    private readonly companyDropdown: Locator;
     private readonly companyDropdownOptions: Locator;
     private readonly selectedCompanyDisplay: Locator;
     private readonly changeLink: Locator;
-    private readonly dualList: Locator;
-    private readonly exportButton: Locator;
 
-    // locators — TC04
-    private readonly companyFormGroup: Locator;
-    private readonly companyErrorMessage: Locator;
-
-    // locators — TC06
+    // ── AngularJS ewn-dual-list component ────────────────────────────────────
+    private readonly dualListContainer: Locator;
+    private readonly availablePanel: Locator;
+    private readonly selectedPanel: Locator;
     private readonly availableItems: Locator;
     private readonly selectedItems: Locator;
     private readonly moveRightButton: Locator;
+    private readonly moveLeftButton: Locator;
+
+    // ── Export button ─────────────────────────────────────────────────────────
+    private readonly exportButton: Locator;
+
+    // ── Toast alert (success / error) ────────────────────────────────────────
+    private readonly toastAlert: Locator;
+    private readonly toastDismissButton: Locator;
 
     constructor(page: Page) {
         this.page = page;
 
+        // Vue company-input — input has id="txtCompany" and role="combobox"
         this.companySearchInput     = page.locator('#txtCompany');
-        this.companyDropdown        = page.locator('ul.company-dropdown[role="listbox"]');
-        this.companyDropdownOptions = page.locator('ul.company-dropdown[role="listbox"] li[role="option"]');
-        this.selectedCompanyDisplay = page.locator('.company-input-wrapper .company-display');
-        this.changeLink             = page.locator('.company-input-wrapper a.change-link');
-        this.dualList               = page.locator('ewn-dual-list');
-        this.exportButton           = page.locator('button', { hasText: /export to isn/i });
+        this.companyDropdownOptions = page.locator('ul.company-dropdown li[role="option"]');
+        // After selection, company name shown in p.form-control-static.selected-display
+        this.selectedCompanyDisplay = page.locator('p.form-control-static.selected-display');
+        // Change link resets the selection
+        this.changeLink             = page.locator('a.change-link');
 
-        // TC04
-        this.companyFormGroup       = page.locator('.form-group', { has: page.locator('#txtCompany') });
-        this.companyErrorMessage    = page.locator('[data-v-651cb9c2].error-message, .error-message').filter({ hasText: /required/i });
+        // AngularJS ewn-dual-list root element
+        this.dualListContainer = page.locator('ewn-dual-list');
 
-        // TC06 — AngularJS dual list (ewn-dual-list)
-        this.availableItems  = page.locator('ewn-dual-list .dual-list-left .list-group-item.vs-repeat-repeated-element');
-        this.selectedItems   = page.locator('ewn-dual-list .dual-list-right .list-group-item.vs-repeat-repeated-element');
-        this.moveRightButton = page.locator('ewn-dual-list .move-button-group .ri-arrow-right-s-line');
+        // Left (Available) and right (Selected) panels
+        this.availablePanel = page.locator('.dual-list-left');
+        this.selectedPanel  = page.locator('.dual-list-right');
+
+        // Virtual-scroll items inside each panel (ng-repeat rows)
+        this.availableItems = page.locator(
+            '.dual-list-left .list-group-item.vs-repeat-repeated-element'
+        );
+        this.selectedItems = page.locator(
+            '.dual-list-right .list-group-item.vs-repeat-repeated-element'
+        );
+
+        // Move buttons — rendered as <div> with icon class, inside .move-button-group
+        this.moveRightButton = page.locator('.move-button-group .ri-arrow-right-s-line');
+        this.moveLeftButton  = page.locator('.move-button-group .ri-arrow-left-s-line');
+
+        // Export to ISN submit button
+        this.exportButton = page.locator('button.button-primary');
+
+        // Toast notification (success or error) — appears after export action
+        this.toastAlert        = page.locator('div.toast[role="alert"]');
+        this.toastDismissButton = page.locator('div.toast button.btn-close');
     }
 
-    // ── Navigation ──────────────────────────────────────────────────────────
+    // ── Navigation ───────────────────────────────────────────────────────────
 
     async navigateTo() {
         await this.page.goto('/legacy/IsnManualExport');
         await this.page.waitForLoadState('domcontentloaded');
-        await this.companySearchInput.waitFor({ state: 'visible', timeout: 15000 });
     }
 
-    // ── Actions ──────────────────────────────────────────────────────────────
+    // ── Company selection ────────────────────────────────────────────────────
 
-    async typeCompanyName(name: string) {
+    async selectCompany(name: string) {
+        await this.companySearchInput.waitFor({ state: 'visible', timeout: 10000 });
         await this.companySearchInput.click();
-        await this.companySearchInput.fill(name);
-        await this.page.waitForSelector('ul.company-dropdown[role="listbox"]', {
-            state: 'visible',
-            timeout: 15000,
-        });
-    }
-
-    async selectCompanyFromDropdown(name: string) {
-        const option = this.companyDropdownOptions.filter({ hasText: new RegExp(name, 'i') }).first();
-        await option.waitFor({ state: 'visible' });
+        // pressSequentially triggers the Vue combobox $watch reliably
+        await this.companySearchInput.pressSequentially(name, { delay: 50 });
+        const dropdown = this.page.locator('ul.company-dropdown');
+        await dropdown.waitFor({ state: 'visible', timeout: 15000 });
+        const option = this.companyDropdownOptions.filter({ hasText: name }).first();
+        await option.waitFor({ state: 'visible', timeout: 10000 });
         await option.click();
-        await this.page.waitForSelector('.company-input-wrapper .company-display', {
-            state: 'visible',
-        });
+        await this.selectedCompanyDisplay.waitFor({ state: 'visible', timeout: 10000 });
     }
 
-    // ── TC03 assertions ──────────────────────────────────────────────────────
+    async clickChangeCompany() {
+        await this.changeLink.click();
+        await this.companySearchInput.waitFor({ state: 'visible', timeout: 10000 });
+    }
 
     async expectCompanySearchInputVisible() {
         await expect(this.companySearchInput).toBeVisible();
     }
 
-    async expectCompanySearchInputEmpty() {
-        await expect(this.companySearchInput).toBeEmpty();
-    }
-
-    async expectDropdownVisible() {
-        await expect(this.companyDropdown).toBeVisible();
-    }
-
-    async expectDropdownHidden() {
-        await expect(this.companyDropdown).toBeHidden();
-    }
-
-    async expectDropdownHasResults(): Promise<number> {
-        const count = await this.companyDropdownOptions.count();
-        expect(count).toBeGreaterThan(0);
-        return count;
-    }
-
-    async expectAllDropdownOptionsContainText(text: string) {
-        const count = await this.companyDropdownOptions.count();
-        for (let i = 0; i < count; i++) {
-            const optionText = await this.companyDropdownOptions.nth(i).textContent();
-            expect(optionText?.toLowerCase()).toContain(text.toLowerCase());
-        }
+    async expectCompanySearchInputNotVisible() {
+        await expect(this.companySearchInput).toBeHidden();
     }
 
     async expectSelectedCompanyDisplayVisible() {
         await expect(this.selectedCompanyDisplay).toBeVisible();
     }
 
-    async expectSelectedCompanyDisplayContains(text: string) {
-        await expect(this.selectedCompanyDisplay).toContainText(new RegExp(text, 'i'));
+    async expectSelectedCompanyIs(name: string) {
+        await expect(this.selectedCompanyDisplay).toContainText(new RegExp(name, 'i'));
     }
 
     async expectChangeLinkVisible() {
         await expect(this.changeLink).toBeVisible();
     }
 
-    async expectDualListHidden() {
-        await expect(this.dualList).toBeHidden();
-    }
-
-    async expectExportButtonHidden() {
-        await expect(this.exportButton).toBeHidden();
-    }
-
-    async expectDualListVisible() {
-        await expect(this.dualList).toBeVisible();
-    }
-
-    async expectExportButtonVisible() {
-        await expect(this.exportButton).toBeVisible();
-    }
-
-    async expectFirstOptionHasActiveClass() {
-        const firstOption = this.companyDropdownOptions.first();
-        await expect(firstOption).toHaveClass(/active/);
-    }
-
-    async pressKeyOnSearchInput(key: string) {
-        await this.companySearchInput.press(key);
-    }
-
-    // ── TC04 actions ─────────────────────────────────────────────────────────
-
-    async typeAndWaitForApiResponse(searchText: string) {
-        await this.companySearchInput.click();
-        await this.companySearchInput.fill(searchText);
-        // Wait for Vue debounce + DOM update to settle
-        await this.page.waitForTimeout(1500);
-    }
-
-    async clearCompanyInput() {
-        await this.companySearchInput.clear();
-    }
-
-    // ── TC04 assertions ──────────────────────────────────────────────────────
-
-    async expectDropdownEmptyOrHidden() {
-        const dropdownVisible = await this.companyDropdown.isVisible();
-        if (dropdownVisible) {
-            const count = await this.companyDropdownOptions.count();
-            expect(count).toBe(0);
-        } else {
-            await expect(this.companyDropdown).toBeHidden();
-        }
-    }
-
-    async expectCompanySearchInputHasValue(value: string) {
-        await expect(this.companySearchInput).toHaveValue(value);
-    }
-
-    async expectSelectedCompanyDisplayHidden() {
-        await expect(this.selectedCompanyDisplay).toBeHidden();
-    }
-
-    async expectChangeLinkHidden() {
+    async expectChangeLinkNotVisible() {
         await expect(this.changeLink).toBeHidden();
     }
 
-    async expectCompanyFieldHasError() {
-        await expect(this.companyFormGroup).toHaveClass(/has-error/);
-    }
-
-    async expectRequiredMessageVisible() {
-        await expect(this.companyErrorMessage).toBeVisible();
-    }
-
-    // ── TC06 actions ─────────────────────────────────────────────────────────
+    // ── Dual list ────────────────────────────────────────────────────────────
 
     async waitForDualListToLoad() {
-        await this.dualList.waitFor({ state: 'visible', timeout: 15000 });
-        await this.page.locator('ewn-dual-list .dual-list-left .list-group-item.vs-repeat-repeated-element').first()
-            .waitFor({ state: 'visible', timeout: 15000 });
+        await this.dualListContainer.waitFor({ state: 'visible', timeout: 15000 });
+        // The vs-repeat virtual scroll needs the container to have a computed height
+        // before it renders items. Scroll the panel to trigger the first render.
+        await this.availablePanel.scrollIntoViewIfNeeded();
+        await this.availableItems.first().waitFor({ state: 'visible', timeout: 30000 });
     }
 
-    async moveFirstAvailableItemToSelected() {
-        const firstItem = this.availableItems.first();
-        await firstItem.waitFor({ state: 'visible' });
-        // Click the checkbox inside the item to select it
-        await firstItem.locator('input[type="checkbox"]').click();
-        await this.clickMoveRight();
+    async expectDualListVisible() {
+        await expect(this.availablePanel).toBeVisible();
+        await expect(this.selectedPanel).toBeVisible();
     }
 
-    async clickMoveRight() {
-        await this.moveRightButton.waitFor({ state: 'visible', timeout: 5000 });
-        await this.moveRightButton.click();
-        await this.selectedItems.first().waitFor({ state: 'visible', timeout: 10000 });
-    }
-
-    async clickChangeLink() {
-        await this.changeLink.waitFor({ state: 'visible' });
-        await this.changeLink.click();
-        await this.companySearchInput.waitFor({ state: 'visible' });
-        await expect(this.companySearchInput).toBeEmpty();
-    }
-
-    async getFirstAvailableItemText(): Promise<string> {
-        const text = await this.availableItems.first().textContent();
-        return text?.trim() ?? '';
+    async expectDualListNotVisible() {
+        await expect(this.dualListContainer).toBeHidden();
     }
 
     async getAvailableItemsCount(): Promise<number> {
@@ -224,12 +139,6 @@ export class IsnManualExportPage {
 
     async getSelectedItemsCount(): Promise<number> {
         return await this.selectedItems.count();
-    }
-
-    // ── TC06 assertions ──────────────────────────────────────────────────────
-
-    async expectSelectedPanelEmpty() {
-        await expect(this.selectedItems).toHaveCount(0);
     }
 
     async expectAvailableItemsCountGreaterThan(n: number) {
@@ -241,100 +150,88 @@ export class IsnManualExportPage {
         await expect(this.selectedItems).toHaveCount(n);
     }
 
-    // ── TC07 actions ─────────────────────────────────────────────────────────
-
-    async checkFirstAvailableItem() {
-        const firstItem = this.availableItems.first();
-        await firstItem.waitFor({ state: 'visible' });
-        await firstItem.locator('input[type="checkbox"]').click();
+    async moveFirstAvailableItemToSelected() {
+        const first = this.availableItems.first();
+        await first.waitFor({ state: 'visible', timeout: 10000 });
+        await first.locator('input[type="checkbox"]').click();
+        await this.moveRightButton.click();
+        // Wait for the item to appear in the selected panel
+        await this.selectedItems.first().waitFor({ state: 'visible', timeout: 10000 });
     }
 
-    async checkFirstSelectedItem() {
-        const firstItem = this.selectedItems.first();
-        await firstItem.waitFor({ state: 'visible' });
-        await firstItem.locator('input[type="checkbox"]').click();
+    async moveFirstSelectedItemToAvailable() {
+        const first = this.selectedItems.first();
+        await first.waitFor({ state: 'visible', timeout: 10000 });
+        await first.locator('input[type="checkbox"]').click();
+        await this.moveLeftButton.click();
     }
 
-    async clickMoveLeft() {
-        const moveLeftButton = this.page.locator('ewn-dual-list .move-button-group .ri-arrow-left-s-line');
-        await moveLeftButton.waitFor({ state: 'visible' });
-        await moveLeftButton.click();
+    async expectNoAvailableResults() {
+        await this.availablePanel.waitFor({ state: 'visible', timeout: 10000 });
+        await expect(this.availableItems).toHaveCount(0, { timeout: 10000 });
     }
 
-    async getFirstAvailableItemLabel(): Promise<string> {
-        const text = await this.availableItems.first().locator('span.ng-binding').textContent();
-        return text?.trim() ?? '';
+    // ── Search filters ───────────────────────────────────────────────────────
+
+    async searchAvailableEmployees(text: string) {
+        const input = this.page.locator('.dual-list-left input[placeholder="Search"]');
+        await input.waitFor({ state: 'visible', timeout: 5000 });
+        await input.fill(text);
     }
 
-    async getFirstSelectedItemLabel(): Promise<string> {
-        const text = await this.selectedItems.first().locator('span.ng-binding').textContent();
-        return text?.trim() ?? '';
+    async searchSelectedEmployees(text: string) {
+        const input = this.page.locator('.dual-list-right input[placeholder="Search"]');
+        await input.waitFor({ state: 'visible', timeout: 5000 });
+        await input.fill(text);
     }
 
-    async getAvailableItemLabels(): Promise<string[]> {
-        const texts = await this.availableItems.locator('span.ng-binding').allTextContents();
-        return texts.map(t => t.trim());
-    }
-
-    async getSelectedItemLabels(): Promise<string[]> {
-        const texts = await this.selectedItems.locator('span.ng-binding').allTextContents();
-        return texts.map(t => t.trim());
-    }
-
-    // ── TC07 assertions ──────────────────────────────────────────────────────
-
-    async expectFirstAvailableItemChecked() {
-        const checkbox = this.availableItems.first().locator('input[type="checkbox"]');
-        await expect(checkbox).toBeChecked();
-    }
-
-    async expectFirstSelectedItemChecked() {
-        const checkbox = this.selectedItems.first().locator('input[type="checkbox"]');
-        await expect(checkbox).toBeChecked();
-    }
-
-    async expectNoDuplicatesAcrossPanels() {
-        const availableLabels = await this.getAvailableItemLabels();
-        const selectedLabels  = await this.getSelectedItemLabels();
-        const inBoth = availableLabels.filter(l => selectedLabels.includes(l));
-        expect(inBoth).toHaveLength(0);
-    }
-
-    // ── TC11 actions ─────────────────────────────────────────────────────────
-
-    async moveNAvailableUsersToSelected(n: number): Promise<string[]> {
-        const movedLabels: string[] = [];
-        for (let i = 0; i < n; i++) {
-            const firstItem = this.availableItems.first();
-            await firstItem.waitFor({ state: 'visible' });
-            const label = await firstItem.locator('span.ng-binding').textContent();
-            movedLabels.push(label?.trim() ?? '');
-            await firstItem.locator('input[type="checkbox"]').click();
-            await this.clickMoveRight();
-        }
-        return movedLabels;
-    }
+    // ── Export button ─────────────────────────────────────────────────────────
 
     async clickExportButton() {
-        await this.exportButton.waitFor({ state: 'visible' });
         await this.exportButton.click();
     }
 
-    // ── TC11 assertions ──────────────────────────────────────────────────────
+    async expectExportButtonVisible() {
+        await expect(this.exportButton).toBeVisible();
+    }
+
+    async expectExportButtonNotVisible() {
+        await expect(this.exportButton).toBeHidden();
+    }
 
     async expectExportButtonEnabled() {
         await expect(this.exportButton).toBeEnabled();
     }
 
-    async expectSuccessToastVisible() {
-        const toast = this.page.locator('.toast.text-bg-success');
-        await expect(toast).toBeVisible({ timeout: 10000 });
+    async expectExportButtonDisabled() {
+        await expect(this.exportButton).toBeDisabled();
     }
 
-    async expectSelectedPanelHasLabels(labels: string[]) {
-        const actual = await this.getSelectedItemLabels();
-        for (const label of labels) {
-            expect(actual).toContain(label);
-        }
+    // ── Toast alert ──────────────────────────────────────────────────────────
+
+    async expectSuccessAlertVisible() {
+        // Wait for the success toast to appear
+        const successToast = this.page.locator('div.toast.text-bg-success[role="alert"]');
+        await expect(successToast).toBeVisible({ timeout: 15000 });
+        await expect(successToast).toContainText(/success|export/i);
+    }
+
+    async expectErrorAlertVisible() {
+        // Wait for an error toast to appear
+        const errorToast = this.page.locator('div.toast.text-bg-danger[role="alert"], div.toast.text-bg-warning[role="alert"]');
+        await expect(errorToast).toBeVisible({ timeout: 15000 });
+    }
+
+    async expectAlertVisible() {
+        await expect(this.toastAlert).toBeVisible({ timeout: 15000 });
+    }
+
+    async expectAlertNotVisible() {
+        await expect(this.toastAlert).toBeHidden({ timeout: 5000 });
+    }
+
+    async dismissAlert() {
+        await this.toastDismissButton.click();
+        await expect(this.toastAlert).toBeHidden({ timeout: 5000 });
     }
 }

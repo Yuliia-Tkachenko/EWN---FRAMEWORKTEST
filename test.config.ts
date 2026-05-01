@@ -3,7 +3,7 @@ export class TestConfig {
     //appUrl="https://test-auth.ewn.com/static/login"
     appUrl="https://test-auth.ewn.com/static/login"
 
-    //valid username and password - EWN DEMO company (Test env) 
+    //valid username and password - EWN DEMO company Julia_Transfer-USA (Automation) (Test env) 
     validUsername="Andryflitt"
     validPassword="Qwerty2207!!"
 

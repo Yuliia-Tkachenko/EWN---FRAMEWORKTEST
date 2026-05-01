@@ -133,7 +133,7 @@ export class AssessmentPage {
     // ── Results ──────────────────────────────────────────────────────────────
 
     async expectResultsVisible() {
-        await expect(this.resultSection).toBeVisible({ timeout: 5_000 });
+        await expect(this.resultSection.first()).toBeVisible({ timeout: 5_000 });
     }
 
     // ── Utility ──────────────────────────────────────────────────────────────
