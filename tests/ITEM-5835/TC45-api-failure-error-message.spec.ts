@@ -53,6 +53,14 @@ test.describe('ITEM-5835 â€” eCard Data Export: Consistency & Quality', () 
     // Wait briefly for the error response to be processed
     await page.waitForTimeout(2000);
 
+    // expect: An error message or toast notification is displayed to the user
+    // BUG: App silently swallows the 500 error â€" no toast or error message is shown.
+    // The test correctly fails here until the app implements proper error handling.
+    await expect(
+      eCardPage.toastAlert,
+      'A toast or error notification should be displayed when the API returns a 500'
+    ).toBeVisible({ timeout: 5000 });
+
     // expect: The page does not crash or display a blank/broken state
     const heading = page.locator('.product-section h1').filter({ hasText: /eCard Data Export/i });
     await expect(heading, 'Page heading should still be visible after API error').toBeVisible();

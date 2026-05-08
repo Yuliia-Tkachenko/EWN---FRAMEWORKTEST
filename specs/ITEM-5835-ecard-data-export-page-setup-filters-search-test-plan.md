@@ -581,6 +581,8 @@ Test plan for **ITEM-5835** ("[BMAD] Convert eCard Data Export — Page Setup, F
    - expect: The page does not crash or display a blank/broken state.
    - expect: No unhandled JavaScript errors appear in the console.
 
+> **Bug:** The app silently swallows the 500 error — no toast or error notification is shown to the user. The automated test **fails** as a regression marker until proper error handling is implemented in the Vue 3 component.
+
 #### 8.3. TC46 — Verify Unauthorized Access Triggers Auth Error Handling Flow ✅
 
 **File:** `tests/ITEM-5835/TC46-unauthorized-access.spec.ts`  
