@@ -26,35 +26,37 @@ test.describe('TC20 — Export button: API error shows failure alert', () => {
     await context.close();
   });
 
-  test('TC20: when the export API returns a 500 error, an error alert is displayed', async () => {
-    test.setTimeout(90000);
-    const report = new IsnManualExportPage(page);
+  test.fixme('TC20: when the export API returns a 500 error, an error alert is displayed',
+    // ⚠️ SKIP REASON: Route intercept pattern '**/ApiProxy**isn-evaluation-exports**' does not
+    // match the real export endpoint. When run, the real API is called and returns a success toast.
+    // The assertion also incorrectly matched the success toast (false pass).
+    //
+    // TO FIX:
+    // 1. Open DevTools → Network tab (Fetch/XHR filter)
+    // 2. Navigate to /legacy/IsnManualExport, select a company, move an employee, click Export to ISN
+    // 3. Copy the exact request URL from the Network tab
+    // 4. Update the route pattern below with the real URL
+    // 5. Update expectErrorAlertVisible() to assert on the specific error toast selector
+    async () => {
+      test.setTimeout(90000);
+      const report = new IsnManualExportPage(page);
 
-    // Step 1: Navigate to ISN Manual Export and select company 'JuliaLLC'
-    await report.navigateTo();
-    await report.selectCompany('JuliaLLC');
-    await report.waitForDualListToLoad();
+      await report.navigateTo();
+      await report.selectCompany('JuliaLLC');
+      await report.waitForDualListToLoad();
 
-    // Step 2: Set up a route to intercept the ISN export API call and return 500.
-    // The actual export endpoint is: /legacy/ApiProxy?url=api%2Fcompanies%2F{id}%2Fisn-evaluation-exports
-    await page.route('**/ApiProxy**isn-evaluation-exports**', route => {
-      route.fulfill({ status: 500, body: JSON.stringify({ message: 'Internal Server Error' }) });
-    });
+      // TODO: replace with real endpoint URL confirmed from Network tab
+      await page.route('**/ApiProxy**isn-evaluation-exports**', route => {
+        route.fulfill({ status: 500, body: JSON.stringify({ message: 'Internal Server Error' }) });
+      });
 
-    // Step 3: Move at least one employee to the Selected panel
-    await report.moveFirstAvailableItemToSelected();
-    await report.expectSelectedItemsCount(1);
+      await report.moveFirstAvailableItemToSelected();
+      await report.expectSelectedItemsCount(1);
+      await report.clickExportButton();
+      await report.expectErrorAlertVisible();
+      await report.expectExportButtonVisible();
 
-    // Step 4: Click the 'Export to ISN' button
-    await report.clickExportButton();
-
-    // Step 5: Verify an error alert is shown (not a success alert)
-    await report.expectErrorAlertVisible();
-
-    // Step 6: Verify the page is still functional after the error
-    await report.expectExportButtonVisible();
-
-    // Cleanup routes
-    await page.unroute('**/ApiProxy**isn-evaluation-exports**');
-  });
+      await page.unroute('**/ApiProxy**isn-evaluation-exports**');
+    }
+  );
 });

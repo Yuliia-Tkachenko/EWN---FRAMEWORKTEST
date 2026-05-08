@@ -33,7 +33,7 @@ test.describe('TC07 — Company typeahead: dropdown filters by partial name', ()
     await report.navigateTo();
 
     // Step 2: Type a partial company name 'Julia' into the company search input
-    const companyInput = page.locator('#txtCompany');
+    const companyInput = page.getByRole('combobox', { name: 'Select Company:' });
     await companyInput.waitFor({ state: 'visible', timeout: 10000 });
     await companyInput.click();
     await companyInput.pressSequentially('Julia', { delay: 50 });

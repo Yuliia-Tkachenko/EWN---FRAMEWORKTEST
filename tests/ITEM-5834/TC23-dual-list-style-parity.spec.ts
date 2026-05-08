@@ -35,32 +35,25 @@ test.describe('TC23 — Dual list component: style parity check', () => {
     await report.waitForDualListToLoad();
 
     // Step 2: Verify the 'Available Employees' panel (left) is visible
-    const availablePanel = page.locator('.dual-list-left');
-    await expect(availablePanel).toBeVisible();
+    await report.expectAvailablePanelVisible();
 
     // Step 3: Verify the 'Selected Employees' panel (right) is visible
-    const selectedPanel = page.locator('.dual-list-right');
-    await expect(selectedPanel).toBeVisible();
+    await report.expectSelectedPanelVisible();
 
     // Step 4: Verify a search input is present inside the Available Employees panel
-    const availableSearch = page.locator('.dual-list-left input[placeholder="Search"]');
-    await expect(availableSearch).toBeVisible();
+    await report.expectAvailableSearchInputVisible();
 
     // Step 5: Verify a search input is present inside the Selected Employees panel
-    const selectedSearch = page.locator('.dual-list-right input[placeholder="Search"]');
-    await expect(selectedSearch).toBeVisible();
+    await report.expectSelectedSearchInputVisible();
 
-    // Step 6: Verify the Move right (→) button is visible
-    const moveRight = page.locator('.move-button-group .ri-arrow-right-s-line');
-    await expect(moveRight).toBeVisible();
+    // Step 6: Verify the Move right button is visible
+    await report.expectMoveRightButtonVisible();
 
-    // Step 7: Verify the Move left (←) button is visible
-    const moveLeft = page.locator('.move-button-group .ri-arrow-left-s-line');
-    await expect(moveLeft).toBeVisible();
+    // Step 7: Verify the Move left button is visible
+    await report.expectMoveLeftButtonVisible();
 
     // Step 8: Verify the two panels are side by side (roughly same vertical level)
-    const availableBox = await availablePanel.boundingBox();
-    const selectedBox  = await selectedPanel.boundingBox();
-    expect(Math.abs((availableBox?.y ?? 0) - (selectedBox?.y ?? 0))).toBeLessThan(50);
+    const atSameLevel = await report.panelsAreAtSameVerticalLevel(50);
+    expect(atSameLevel).toBe(true);
   });
 });

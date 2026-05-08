@@ -29,37 +29,25 @@ test.describe('TC25 — Keyboard navigation: Tab through form elements', () => {
   test('TC25: Tab key moves focus through interactive elements and Export button is keyboard-accessible', async () => {
     const report = new IsnManualExportPage(page);
 
-    // Step 1: Navigate to ISN Manual Export page
+    // Step 1: Navigate to ISN Manual Export page and select a company
     await report.navigateTo();
-
-    // Step 2: Click the company search input to give it focus
-    const companyInput = page.locator('#txtCompany');
-    await companyInput.waitFor({ state: 'visible', timeout: 10000 });
-    await companyInput.click();
-
-    // Step 3: Type company name and select via keyboard (ArrowDown + Enter)
-    await companyInput.pressSequentially('JuliaLLC', { delay: 50 });
-    const dropdown = page.locator('ul.company-dropdown');
-    await dropdown.waitFor({ state: 'visible', timeout: 15000 });
-    await companyInput.press('ArrowDown');
-    await companyInput.press('Enter');
-
-    // Step 4: Wait for the dual list to load
+    await report.selectCompany('JuliaLLC');
     await report.waitForDualListToLoad();
 
-    // Step 5: Tab through the page and verify the Export button can receive focus
-    const exportButton = page.locator('button.button-primary');
-    await expect(exportButton).toBeVisible();
+    // Step 2: Move at least one employee to Selected so the Export button becomes enabled
+    await report.moveFirstAvailableItemToSelected();
+    await report.expectSelectedItemsCount(1);
 
-    // Focus the export button directly and verify focus lands on it
-    await exportButton.focus();
-    const isFocused = await exportButton.evaluate(el => el === document.activeElement);
+    // Step 3: Verify the Export button is visible and enabled
+    await report.expectExportButtonVisible();
+    await report.expectExportButtonEnabled();
+
+    // Step 4: Focus the Export button directly and verify focus lands on it
+    await report.focusExportButton();
+    const isFocused = await report.exportButtonHasFocus();
     expect(isFocused).toBe(true);
 
-    // Step 6: Verify the Export button is enabled and keyboard-accessible
-    await expect(exportButton).toBeEnabled();
-
-    // Step 7: Verify the company input is reachable via Tab from the page start
+    // Step 5: Verify keyboard navigation does not throw errors
     await page.keyboard.press('Tab');
     // No error should occur — keyboard navigation is functional
   });

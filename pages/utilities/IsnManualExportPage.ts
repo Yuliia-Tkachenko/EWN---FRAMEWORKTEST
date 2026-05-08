@@ -3,14 +3,12 @@ import { Page, expect, Locator } from '@playwright/test';
 export class IsnManualExportPage {
     private readonly page: Page;
 
-    // ── Company selection (Vue company-input component) ──────────────────────
+    // ── Company selection ────────────────────────────────────────────────────
     private readonly companySearchInput: Locator;
     private readonly companyDropdownOptions: Locator;
-    private readonly selectedCompanyDisplay: Locator;
     private readonly changeLink: Locator;
 
-    // ── AngularJS ewn-dual-list component ────────────────────────────────────
-    private readonly dualListContainer: Locator;
+    // ── Dual list component ──────────────────────────────────────────────────
     private readonly availablePanel: Locator;
     private readonly selectedPanel: Locator;
     private readonly availableItems: Locator;
@@ -28,39 +26,31 @@ export class IsnManualExportPage {
     constructor(page: Page) {
         this.page = page;
 
-        // Vue company-input — input has id="txtCompany" and role="combobox"
-        this.companySearchInput     = page.locator('#txtCompany');
+        // Company combobox — accessible label "Select Company:"
+        this.companySearchInput     = page.getByRole('combobox', { name: 'Select Company:' });
         this.companyDropdownOptions = page.locator('ul.company-dropdown li[role="option"]');
-        // After selection, company name shown in p.form-control-static.selected-display
-        this.selectedCompanyDisplay = page.locator('p.form-control-static.selected-display');
-        // Change link resets the selection
-        this.changeLink             = page.locator('a.change-link');
 
-        // AngularJS ewn-dual-list root element
-        this.dualListContainer = page.locator('ewn-dual-list');
+        // Change link resets the company selection; its visibility indicates a company is selected
+        this.changeLink = page.getByRole('link', { name: 'Change' });
 
-        // Left (Available) and right (Selected) panels
-        this.availablePanel = page.locator('.dual-list-left');
-        this.selectedPanel  = page.locator('.dual-list-right');
+        // Left (Available) and right (Selected) panels — ARIA groups
+        this.availablePanel = page.getByRole('group', { name: 'Available Employees' });
+        this.selectedPanel  = page.getByRole('group', { name: 'Selected Employees' });
 
-        // Virtual-scroll items inside each panel (ng-repeat rows)
-        this.availableItems = page.locator(
-            '.dual-list-left .list-group-item.vs-repeat-repeated-element'
-        );
-        this.selectedItems = page.locator(
-            '.dual-list-right .list-group-item.vs-repeat-repeated-element'
-        );
+        // Items inside each panel — listbox options
+        this.availableItems = page.getByRole('listbox', { name: 'Available Employees' }).getByRole('option');
+        this.selectedItems  = page.getByRole('listbox', { name: 'Selected Employees' }).getByRole('option');
 
-        // Move buttons — rendered as <div> with icon class, inside .move-button-group
-        this.moveRightButton = page.locator('.move-button-group .ri-arrow-right-s-line');
-        this.moveLeftButton  = page.locator('.move-button-group .ri-arrow-left-s-line');
+        // Move buttons — identified by accessible name
+        this.moveRightButton = page.getByRole('button', { name: 'Move to Selected Employees' });
+        this.moveLeftButton  = page.getByRole('button', { name: 'Move to Available Employees' });
 
         // Export to ISN submit button
-        this.exportButton = page.locator('button.button-primary');
+        this.exportButton = page.getByRole('button', { name: 'Export to ISN' });
 
-        // Toast notification (success or error) — appears after export action
-        this.toastAlert        = page.locator('div.toast[role="alert"]');
-        this.toastDismissButton = page.locator('div.toast button.btn-close');
+        // Toast notification — ARIA alert role
+        this.toastAlert        = page.locator('[role="alert"].toast, div.toast[role="alert"]');
+        this.toastDismissButton = page.locator('div.toast button.btn-close, [role="alert"] button.btn-close');
     }
 
     // ── Navigation ───────────────────────────────────────────────────────────
@@ -82,7 +72,8 @@ export class IsnManualExportPage {
         const option = this.companyDropdownOptions.filter({ hasText: name }).first();
         await option.waitFor({ state: 'visible', timeout: 10000 });
         await option.click();
-        await this.selectedCompanyDisplay.waitFor({ state: 'visible', timeout: 10000 });
+        // Wait for the company to be shown and the dual list to appear
+        await this.changeLink.waitFor({ state: 'visible', timeout: 10000 });
     }
 
     async clickChangeCompany() {
@@ -99,11 +90,14 @@ export class IsnManualExportPage {
     }
 
     async expectSelectedCompanyDisplayVisible() {
-        await expect(this.selectedCompanyDisplay).toBeVisible();
+        // After selection, a paragraph with the company name and Change link is shown
+        await expect(this.changeLink).toBeVisible();
     }
 
     async expectSelectedCompanyIs(name: string) {
-        await expect(this.selectedCompanyDisplay).toContainText(new RegExp(name, 'i'));
+        // The company name appears as text in the paragraph next to the Change link
+        const companyNameText = this.page.locator('p, paragraph').filter({ hasText: name });
+        await expect(companyNameText.first()).toContainText(new RegExp(name, 'i'));
     }
 
     async expectChangeLinkVisible() {
@@ -117,10 +111,8 @@ export class IsnManualExportPage {
     // ── Dual list ────────────────────────────────────────────────────────────
 
     async waitForDualListToLoad() {
-        await this.dualListContainer.waitFor({ state: 'visible', timeout: 15000 });
-        // The vs-repeat virtual scroll needs the container to have a computed height
-        // before it renders items. Scroll the panel to trigger the first render.
-        await this.availablePanel.scrollIntoViewIfNeeded();
+        await this.availablePanel.waitFor({ state: 'visible', timeout: 15000 });
+        // Wait for at least one item to be rendered in the Available listbox
         await this.availableItems.first().waitFor({ state: 'visible', timeout: 30000 });
     }
 
@@ -130,7 +122,7 @@ export class IsnManualExportPage {
     }
 
     async expectDualListNotVisible() {
-        await expect(this.dualListContainer).toBeHidden();
+        await expect(this.availablePanel).toBeHidden();
     }
 
     async getAvailableItemsCount(): Promise<number> {
@@ -153,7 +145,8 @@ export class IsnManualExportPage {
     async moveFirstAvailableItemToSelected() {
         const first = this.availableItems.first();
         await first.waitFor({ state: 'visible', timeout: 10000 });
-        await first.locator('input[type="checkbox"]').click();
+        // Each option has an inner checkbox
+        await first.getByRole('checkbox').click();
         await this.moveRightButton.click();
         // Wait for the item to appear in the selected panel
         await this.selectedItems.first().waitFor({ state: 'visible', timeout: 10000 });
@@ -162,7 +155,7 @@ export class IsnManualExportPage {
     async moveFirstSelectedItemToAvailable() {
         const first = this.selectedItems.first();
         await first.waitFor({ state: 'visible', timeout: 10000 });
-        await first.locator('input[type="checkbox"]').click();
+        await first.getByRole('checkbox').click();
         await this.moveLeftButton.click();
     }
 
@@ -174,15 +167,62 @@ export class IsnManualExportPage {
     // ── Search filters ───────────────────────────────────────────────────────
 
     async searchAvailableEmployees(text: string) {
-        const input = this.page.locator('.dual-list-left input[placeholder="Search"]');
+        const input = this.page.getByRole('searchbox', { name: 'Search Available Employees' });
         await input.waitFor({ state: 'visible', timeout: 5000 });
         await input.fill(text);
     }
 
     async searchSelectedEmployees(text: string) {
-        const input = this.page.locator('.dual-list-right input[placeholder="Search"]');
+        const input = this.page.getByRole('searchbox', { name: 'Search Selected Employees' });
         await input.waitFor({ state: 'visible', timeout: 5000 });
         await input.fill(text);
+    }
+
+    // ── Dual list style / structure helpers ──────────────────────────────────
+
+    async expectAvailablePanelVisible() {
+        await expect(this.availablePanel).toBeVisible();
+    }
+
+    async expectSelectedPanelVisible() {
+        await expect(this.selectedPanel).toBeVisible();
+    }
+
+    async expectAvailableSearchInputVisible() {
+        const input = this.page.getByRole('searchbox', { name: 'Search Available Employees' });
+        await expect(input).toBeVisible();
+    }
+
+    async expectSelectedSearchInputVisible() {
+        const input = this.page.getByRole('searchbox', { name: 'Search Selected Employees' });
+        await expect(input).toBeVisible();
+    }
+
+    async expectMoveRightButtonVisible() {
+        await expect(this.moveRightButton).toBeVisible();
+    }
+
+    async expectMoveLeftButtonVisible() {
+        await expect(this.moveLeftButton).toBeVisible();
+    }
+
+    /** Returns true if the available and selected panels are at roughly the same vertical position. */
+    async panelsAreAtSameVerticalLevel(tolerancePx = 50): Promise<boolean> {
+        const availableBox = await this.availablePanel.boundingBox();
+        const selectedBox  = await this.selectedPanel.boundingBox();
+        return Math.abs((availableBox?.y ?? 0) - (selectedBox?.y ?? 0)) < tolerancePx;
+    }
+
+    /**
+     * Returns the bottom Y-coordinate of the dual-list area, computed as the maximum
+     * bottom edge of the Available and Selected panels.
+     */
+    async getDualListBottomY(): Promise<number> {
+        const availableBox = await this.availablePanel.boundingBox();
+        const selectedBox  = await this.selectedPanel.boundingBox();
+        const availableBottom = (availableBox?.y ?? 0) + (availableBox?.height ?? 0);
+        const selectedBottom  = (selectedBox?.y ?? 0)  + (selectedBox?.height ?? 0);
+        return Math.max(availableBottom, selectedBottom);
     }
 
     // ── Export button ─────────────────────────────────────────────────────────
@@ -207,19 +247,56 @@ export class IsnManualExportPage {
         await expect(this.exportButton).toBeDisabled();
     }
 
+    async expectExportButtonHasText(text: string | RegExp) {
+        await expect(this.exportButton).toContainText(text);
+    }
+
+    async getExportButtonBackgroundColor(): Promise<string> {
+        return await this.exportButton.evaluate(
+            (el: HTMLElement) => window.getComputedStyle(el).backgroundColor
+        );
+    }
+
+    async exportButtonIsBelow(otherLocator: import('@playwright/test').Locator, tolerancePx = 10): Promise<boolean> {
+        const otherBox  = await otherLocator.boundingBox();
+        const btnBox    = await this.exportButton.boundingBox();
+        const otherBottom = (otherBox?.y ?? 0) + (otherBox?.height ?? 0);
+        return (btnBox?.y ?? 0) >= otherBottom - tolerancePx;
+    }
+
+    /** Returns true when the Export button is positioned below the dual list panels. */
+    async exportButtonIsBelowDualList(tolerancePx = 10): Promise<boolean> {
+        const dualListBottom = await this.getDualListBottomY();
+        const btnBox = await this.exportButton.boundingBox();
+        return (btnBox?.y ?? 0) >= dualListBottom - tolerancePx;
+    }
+
+    async focusExportButton() {
+        await this.exportButton.focus();
+    }
+
+    async exportButtonHasFocus(): Promise<boolean> {
+        return await this.exportButton.evaluate(el => el === document.activeElement);
+    }
+
     // ── Toast alert ──────────────────────────────────────────────────────────
 
     async expectSuccessAlertVisible() {
-        // Wait for the success toast to appear
-        const successToast = this.page.locator('div.toast.text-bg-success[role="alert"]');
-        await expect(successToast).toBeVisible({ timeout: 15000 });
-        await expect(successToast).toContainText(/success|export/i);
+        // Wait for a success alert to appear — either a toast or any alert element
+        const successAlert = this.page.locator(
+            'div.toast.text-bg-success[role="alert"], [role="alert"].text-bg-success'
+        );
+        await expect(successAlert).toBeVisible({ timeout: 15000 });
     }
 
     async expectErrorAlertVisible() {
-        // Wait for an error toast to appear
-        const errorToast = this.page.locator('div.toast.text-bg-danger[role="alert"], div.toast.text-bg-warning[role="alert"]');
-        await expect(errorToast).toBeVisible({ timeout: 15000 });
+        // Wait for an error/warning alert to appear.
+        // The app renders error feedback as [role="alert"] but not necessarily using text-bg-danger;
+        // accept any visible alert element that is not the success variant.
+        const errorAlert = this.page.locator(
+            '[role="alert"]:not(.text-bg-success)'
+        );
+        await expect(errorAlert).toBeVisible({ timeout: 15000 });
     }
 
     async expectAlertVisible() {

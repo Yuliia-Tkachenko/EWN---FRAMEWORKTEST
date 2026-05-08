@@ -33,7 +33,7 @@ test.describe('TC09 — Negative: no company match returns empty or no dropdown'
     await report.navigateTo();
 
     // Step 2: Type a nonsense string into the company search input
-    const companyInput = page.locator('#txtCompany');
+    const companyInput = page.getByRole('combobox', { name: 'Select Company:' });
     await companyInput.waitFor({ state: 'visible', timeout: 10000 });
     await companyInput.click();
     await companyInput.pressSequentially('ZZZNONEXISTENTCOMPANY999', { delay: 50 });

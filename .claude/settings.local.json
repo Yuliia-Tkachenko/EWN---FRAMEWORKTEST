@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(npx playwright:*)",
-      "mcp__playwright-test__browser_snapshot"
+      "mcp__playwright-test__browser_snapshot",
+      "mcp__playwright-test__browser_evaluate",
+      "mcp__playwright-test__generator_write_test"
     ]
   }
 }

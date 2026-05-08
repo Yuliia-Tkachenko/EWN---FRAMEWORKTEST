@@ -33,7 +33,7 @@ test.describe('TC05 — Company typeahead: dropdown appears after typing', () =>
     await report.navigateTo();
 
     // Step 2: Click the company search input and type 'JuliaLLC'
-    const companyInput = page.locator('#txtCompany');
+    const companyInput = page.getByRole('combobox', { name: 'Select Company:' });
     await companyInput.waitFor({ state: 'visible', timeout: 10000 });
     await companyInput.click();
     await companyInput.pressSequentially('JuliaLLC', { delay: 50 });

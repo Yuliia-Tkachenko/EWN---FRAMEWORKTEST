@@ -34,22 +34,16 @@ test.describe('TC24 — Export button: styling matches design spec', () => {
     await report.selectCompany('JuliaLLC');
     await report.waitForDualListToLoad();
 
-    // Step 2: Verify the button label is 'Export to ISN' (case-insensitive)
-    const exportButton = page.locator('button.button-primary');
-    await expect(exportButton).toBeVisible();
-    await expect(exportButton).toContainText(/export to isn/i);
+    // Step 2: Verify the Export button is visible with correct label
+    await report.expectExportButtonVisible();
+    await report.expectExportButtonHasText(/export to isn/i);
 
     // Step 3: Verify the button has a distinct background color (not transparent)
-    const bgColor = await exportButton.evaluate((el: HTMLElement) =>
-      window.getComputedStyle(el).backgroundColor
-    );
+    const bgColor = await report.getExportButtonBackgroundColor();
     expect(bgColor).not.toMatch(/rgba\(0, 0, 0, 0\)|transparent/i);
 
     // Step 4: Verify the button is positioned below the dual list panels
-    const dualList = page.locator('ewn-dual-list');
-    const dualListBox   = await dualList.boundingBox();
-    const exportBtnBox  = await exportButton.boundingBox();
-    const dualListBottom = (dualListBox?.y ?? 0) + (dualListBox?.height ?? 0);
-    expect(exportBtnBox?.y ?? 0).toBeGreaterThanOrEqual(dualListBottom - 10);
+    const isBelowDualList = await report.exportButtonIsBelowDualList(10);
+    expect(isBelowDualList).toBe(true);
   });
 });
