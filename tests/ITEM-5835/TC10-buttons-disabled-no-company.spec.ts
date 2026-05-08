@@ -43,6 +43,23 @@ test.describe('ITEM-5835 â€” eCard Data Export: Company Selection', () => {
     await expect(eCardPage.companyValidationError, 'Required validation message should appear when searching without company').toBeVisible();
     await expect(eCardPage.companyValidationError).toContainText(/required/i);
 
-    // Export CSV button is always rendered in DOM; validation error above is the primary guard
+    // expect: The dual list section must remain hidden â€” search should be blocked
+    // BUG (Test env): App executes the search and shows 11 results despite the validation error.
+    // Pre-prod correctly keeps the dual list and Export CSV hidden until a company is selected.
+    await expect(
+      eCardPage.dualListContainer,
+      'Dual list section must remain hidden when no company is selected'
+    ).toBeHidden({ timeout: 5000 });
+
+    await expect(
+      eCardPage.availableItems,
+      'Available Associates list must be empty when no company is selected'
+    ).toHaveCount(0, { timeout: 5000 });
+
+    // expect: Export CSV must not be visible without a company and without search results
+    await expect(
+      eCardPage.exportCsvButton,
+      'Export CSV button must remain hidden when no company is selected'
+    ).toBeHidden();
   });
 });

@@ -39,6 +39,9 @@ test.describe('ITEM-5835 â€” eCard Data Export: Company Selection', () => {
     // expect: A magnifying glass icon/overlay is displayed on the Select Company field
     await expect(eCardPage.companyMagnifyingGlass, 'Magnifying glass icon should be visible').toBeVisible();
 
+    // expect: The dual list section is not visible (no company selected, no search done)
+    await expect(eCardPage.dualListContainer, 'Dual list section should be hidden on initial page load').toBeHidden();
+
     // expect: The Export CSV button is not visible (no company selected, no search done)
     await expect(eCardPage.exportCsvButton, 'Export CSV button should not be visible without company').toBeHidden();
   });

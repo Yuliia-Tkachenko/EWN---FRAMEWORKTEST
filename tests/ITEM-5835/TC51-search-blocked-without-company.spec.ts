@@ -54,6 +54,29 @@ test.describe('ITEM-5835 â€” eCard Data Export: Edge Cases & Negative Scena
     ).toBeVisible();
     await expect(eCardPage.companyValidationError).toContainText(/required/i);
 
-    // The validation error is sufficient proof that the form shows required state
+    // expect: No network requests were dispatched to the search API
+    // BUG (Test env): search requests ARE fired despite the validation error.
+    expect(
+      searchRequests,
+      'No search API requests should fire when no company is selected'
+    ).toHaveLength(0);
+
+    // expect: The dual list section remains hidden â€" search was truly blocked
+    // Pre-prod correctly keeps this hidden; Test env shows it with results (known bug).
+    await expect(
+      eCardPage.dualListContainer,
+      'Dual list section must remain hidden when no company is selected'
+    ).toBeHidden({ timeout: 5000 });
+
+    await expect(
+      eCardPage.availableItems,
+      'Available Associates list must be empty when search is blocked by missing company'
+    ).toHaveCount(0, { timeout: 5000 });
+
+    // expect: Export CSV must not be visible without a company and without search results
+    await expect(
+      eCardPage.exportCsvButton,
+      'Export CSV button must remain hidden when no company is selected'
+    ).toBeHidden();
   });
 });

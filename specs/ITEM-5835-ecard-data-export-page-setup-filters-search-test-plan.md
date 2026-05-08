@@ -91,7 +91,8 @@ Test plan for **ITEM-5835** ("[BMAD] Convert eCard Data Export — Page Setup, F
    - expect: The Select Company input field is visible and empty.
    - expect: A magnifying glass icon/overlay is displayed on the Select Company field.
    - expect: The Search button is not functional (disabled or triggers validation).
-   - expect: The Export CSV button is not visible or not functional.
+   - expect: The Available Associates / dual list section is hidden.
+   - expect: The Export CSV button is not visible.
 
 #### 2.2. TC03 — Verify Autocomplete Triggers on First Character Entry ✅
 
@@ -180,10 +181,11 @@ Test plan for **ITEM-5835** ("[BMAD] Convert eCard Data Export — Page Setup, F
 
 **Steps:**
 1. Log in as an EWN user. Navigate to `/legacy/ECardDataExport`. Do NOT select a company. Click the Search button.
-   - expect: The Search button is disabled, or clicking it shows a validation message, and no API call is made.
-   - expect: The Export CSV button is absent or disabled.
-2. Attempt to click Export CSV (if visible).
-   - expect: The button is not functional without a company selection.
+   - expect: A "Required" validation message appears on the Select Company field.
+   - expect: The Available Associates / dual list section remains hidden (search is blocked).
+   - expect: The Export CSV button remains hidden.
+
+> **Environment discrepancy (AC #11):** In the **Test** environment the app executes the search and populates 11 results in Available Associates, and the Export CSV button becomes visible — despite the validation error. In **Pre-prod** (correct behavior) the dual list and Export CSV remain hidden until a company is selected. The automated test is written against Pre-prod expected behavior and will **fail in Test** as a regression marker until the bug is resolved.
 
 ---
 
@@ -641,8 +643,12 @@ Test plan for **ITEM-5835** ("[BMAD] Convert eCard Data Export — Page Setup, F
 
 **Steps:**
 1. Log in as an EWN user. Navigate to `/legacy/ECardDataExport`. Do NOT select a company. Attempt to click Search.
-   - expect: No API request is sent (verify via network monitor or absence of results).
-   - expect: A validation message or disabled state prevents execution.
+   - expect: No search API request is sent (verified via network monitor).
+   - expect: A "Required" validation message appears on the Select Company field.
+   - expect: The Available Associates / dual list section remains hidden.
+   - expect: The Export CSV button remains hidden.
+
+> **Environment discrepancy:** Same as TC10 — Test env runs the search and shows results. Pre-prod correctly blocks it. See TC10 notes.
 
 #### 9.3. TC52 — Verify Advanced Filter AND Logic: Restrictive Combination Returns Empty Results ➕
 
